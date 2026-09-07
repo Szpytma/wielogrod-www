@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wielogród — polski serwer Minecraft dla dzieci i rodzin</title>
+<meta name="description" content="Wielogród to polski serwer Minecraft dla dzieci i rodzin: miasto zabytków do zwiedzania i survival za murami. Java i Bedrock. Serwer w przygotowaniu.">
+<link rel="icon" href="ikona.png" type="image/png">
+<meta property="og:title" content="Wielogród — polski serwer Minecraft dla dzieci i rodzin">
+<meta property="og:description" content="Miasto zabytków do zwiedzania i survival za murami. Java i Bedrock.">
+<meta property="og:image" content="https://wielogrod.pl/logo.png">
+<meta property="og:url" content="https://wielogrod.pl/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<style>
+  /* Paleta znaku (docs/brand/README.md) */
+  :root {
+    --granat:  #181D28;
+    --granat2: #202736;
+    --granat3: #2A3244;
+    --kamien:  #EEE8D8;
+    --kamien-cichy: #A8A79C;
+    --helm:    #D64638;
+    --trawa:   #60A038;
+    --trawa2:  #7CBF4A;
+    --ziemia:  #86603F;
+    --maks: 1080px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--granat);
+    color: var(--kamien);
+    font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--trawa2); }
+  a:hover { color: var(--kamien); }
+
+  .srodek { width: 100%; max-width: var(--maks); margin: 0 auto; padding: 0 24px; }
+
+  /* --- nagłówek --- */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(24, 29, 40, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--granat3);
+  }
+  .pasek { display: flex; align-items: center; gap: 12px; height: 62px; }
+  .pasek img { width: 34px; height: 34px; image-rendering: auto; }
+  .marka {
+    font-weight: 700; letter-spacing: 0.16em; font-size: 15px;
+    text-transform: uppercase;
+  }
+  .pasek nav { margin-left: auto; display: flex; gap: 22px; font-size: 15px; }
+  .pasek nav a { color: var(--kamien-cichy); text-decoration: none; }
+  .pasek nav a:hover { color: var(--kamien); }
+
+  /* --- hero --- */
+  .hero { padding: 72px 0 64px; text-align: center; }
+  .hero img.znak {
+    width: 168px; height: 168px; margin-bottom: 26px;
+    filter: drop-shadow(0 10px 26px rgba(0,0,0,0.45));
+  }
+  .hero h1 {
+    margin: 0 0 14px;
+    font-size: clamp(38px, 8vw, 62px);
+    line-height: 1.05;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .haslo {
+    margin: 0 auto 26px; max-width: 34ch;
+    font-size: clamp(18px, 3.4vw, 22px);
+    color: var(--trawa2);
+  }
+  .plakietka {
+    display: inline-block;
+    border: 1px solid var(--helm);
+    color: var(--helm);
+    border-radius: 999px;
+    padding: 7px 18px;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .wstep {
+    margin: 30px auto 0; max-width: 62ch;
+    color: var(--kamien-cichy);
+  }
+
+  /* --- sekcje --- */
+  section { padding: 58px 0; border-top: 1px solid var(--granat3); }
+  h2 {
+    margin: 0 0 8px;
+    font-size: clamp(24px, 4.4vw, 32px);
+    letter-spacing: 0.02em;
+  }
+  .podtytul { margin: 0 0 34px; color: var(--kamien-cichy); max-width: 62ch; }
+
+  .kafle { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); }
+  .kafel {
+    background: var(--granat2);
+    border: 1px solid var(--granat3);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .kafel h3 { margin: 0 0 10px; font-size: 19px; }
+  .kafel p  { margin: 0; color: var(--kamien-cichy); font-size: 16px; }
+  .kafel .ikonka { font-size: 26px; line-height: 1; margin-bottom: 14px; display: block; }
+
+  /* --- lista dla rodziców --- */
+  .lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+  .lista li { display: flex; gap: 14px; align-items: flex-start; }
+  .lista .tak {
+    flex: 0 0 auto; margin-top: 3px;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--trawa); color: var(--granat);
+    font-size: 13px; font-weight: 700;
+    display: grid; place-items: center;
+  }
+  .lista b { color: var(--kamien); }
+  .lista span.tresc { color: var(--kamien-cichy); }
+
+  .uwaga {
+    margin-top: 30px;
+    border-left: 3px solid var(--ziemia);
+    background: var(--granat2);
+    padding: 18px 22px;
+    border-radius: 0 10px 10px 0;
+    color: var(--kamien-cichy);
+    font-size: 16px;
+  }
+  .uwaga b { color: var(--kamien); }
+
+  /* --- jak wejść --- */
+  .dwie { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .platforma {
+    background: var(--granat2);
+    border: 1px solid var(--granat3);
+    border-radius: 12px;
+    padding: 26px;
+  }
+  .platforma h3 { margin: 0 0 4px; font-size: 20px; }
+  .platforma .kto { margin: 0 0 18px; color: var(--trawa2); font-size: 15px; }
+  .platforma ol { margin: 0; padding-left: 20px; color: var(--kamien-cichy); font-size: 16px; }
+  .platforma ol li { margin-bottom: 8px; }
+  code {
+    background: var(--granat);
+    border: 1px solid var(--granat3);
+    border-radius: 6px;
+    padding: 2px 7px;
+    font-family: Consolas, "SF Mono", Menlo, monospace;
+    font-size: 0.92em;
+    color: var(--kamien);
+  }
+  .adres-wkrotce {
+    display: inline-block; margin-top: 4px;
+    color: var(--helm); font-size: 15px;
+  }
+
+  /* --- kontakt --- */
+  .kontakt-blok { text-align: center; }
+  .kontakt-blok .mail {
+    display: inline-block; margin-top: 6px;
+    font-size: clamp(19px, 3.6vw, 25px);
+    font-weight: 600;
+    color: var(--trawa2);
+    text-decoration: none;
+    border-bottom: 2px solid var(--granat3);
+    padding-bottom: 3px;
+  }
+  .kontakt-blok .mail:hover { color: var(--kamien); border-bottom-color: var(--trawa); }
+
+  footer {
+    border-top: 1px solid var(--granat3);
+    padding: 30px 0 44px;
+    color: #6E7382;
+    font-size: 14px;
+    text-align: center;
+  }
+  footer p { margin: 4px 0; }
+
+  @media (max-width: 620px) {
+    body { font-size: 16px; }
+    .pasek nav { display: none; }
+    .hero { padding: 48px 0 44px; }
+    .hero img.znak { width: 128px; height: 128px; }
+    section { padding: 44px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="srodek pasek">
+    <img src="ikona.png" alt="">
+    <span class="marka">Wielogród</span>
+    <nav>
+      <a href="#co-to">Co to za miejsce</a>
+      <a href="#rodzice">Dla rodziców</a>
+      <a href="#jak-wejsc">Jak wejść</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<div class="srodek hero">
+  <img class="znak" src="logo.png" alt="Znak serwera Wielogród: blok trawy z murem i wieżą">
+  <h1>Wielogród</h1>
+  <p class="haslo">Zwiedzaj miasto, buduj za murami.</p>
+  <span class="plakietka">Serwer w przygotowaniu</span>
+  <p class="wstep">
+    Polski serwer Minecraft dla dzieci i rodzin. W środku miasto pełne odwzorowanych
+    zabytków do zwiedzania, a poza murami zwykły survival, w którym można budować własne
+    domy. Bez PvP w mieście, bez handlu za prawdziwe pieniądze, po polsku.
+  </p>
+</div>
+
+<section id="co-to">
+  <div class="srodek">
+    <h2>Co to za miejsce</h2>
+    <p class="podtytul">
+      Pomysł jest prosty: jedno miasto, po którym się chodzi jak po muzeum na wolnym
+      powietrzu, i otwarty świat za jego murami, w którym się mieszka.
+    </p>
+    <div class="kafle">
+      <div class="kafel">
+        <span class="ikonka">🏛️</span>
+        <h3>Miasto zabytków</h3>
+        <p>
+          Odwzorowane budowle z polskich i brytyjskich miast, postawione tak, żeby dały się
+          obejść w kilka minut. Miasto rośnie o kolejne zabytki, a nie o kolejne tryby gry.
+        </p>
+      </div>
+      <div class="kafel">
+        <span class="ikonka">🧱</span>
+        <h3>Survival za murami</h3>
+        <p>
+          Za bramą zaczyna się zwykła gra. Zaznaczasz działkę złotą łopatą i nikt poza
+          Tobą oraz zaproszonymi kolegami nie zniszczy tego, co zbudujesz.
+        </p>
+      </div>
+      <div class="kafel">
+        <span class="ikonka">📱</span>
+        <h3>Telefon, konsola, komputer</h3>
+        <p>
+          Serwer przyjmuje graczy z wersji Java i z wersji Bedrock, czyli z telefonu,
+          tabletu, konsoli i Windowsa. Wszyscy grają razem, w jednym świecie.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rodzice">
+  <div class="srodek">
+    <h2>Dla rodziców</h2>
+    <p class="podtytul">
+      Serwer powstaje z myślą o dzieciach, więc zabezpieczenia były pierwsze,
+      a zabawa druga. Oto co jest wdrożone i działa.
+    </p>
+    <ul class="lista">
+      <li>
+        <span class="tak">✓</span>
+        <span class="tresc"><b>Własny filtr czatu.</b> Napisany od zera pod język polski.
+        Rozpoznaje wulgaryzmy także wtedy, gdy dziecko rozbije je spacjami, podmieni litery
+        na cyfry albo użyje znaków z innych alfabetów. Blokuje też linki do obcych serwerów
+        i pytania o dane osobowe, na przykład o adres czy numer telefonu.</span>
+      </li>
+      <li>
+        <span class="tak">✓</span>
+        <span class="tresc"><b>Ochrona przed niszczeniem.</b> Miasto jest chronione i nie da
+        się go zniszczyć. Poza miastem każdy zaznacza własną działkę, a wszystkie zmiany są
+        zapisywane, więc zniszczenia można cofnąć i sprawdzić, kto je zrobił.</span>
+      </li>
+      <li>
+        <span class="tak">✓</span>
+        <span class="tresc"><b>Bez walki między graczami w mieście.</b> Nikt nie zaatakuje
+        dziecka, które przyszło pozwiedzać.</span>
+      </li>
+      <li>
+        <span class="tak">✓</span>
+        <span class="tresc"><b>Ochrona przed oszukiwaniem.</b> Serwer wykrywa programy
+        dające nieuczciwą przewagę.</span>
+      </li>
+      <li>
+        <span class="tak">✓</span>
+        <span class="tresc"><b>Codzienna kopia świata.</b> Sprawdzona odtworzeniem, a nie
+        tylko włączona. Praca dziecka nie przepadnie przez awarię.</span>
+      </li>
+      <li>
+        <span class="tak">✓</span>
+        <span class="tresc"><b>Zero płatnej przewagi.</b> Nie sprzedajemy przedmiotów ani
+        mocy. Jeśli kiedykolwiek pojawi się sklep, będzie wyłącznie z ozdobami.</span>
+      </li>
+    </ul>
+    <div class="uwaga">
+      <b>Będziemy z Wami szczerzy:</b> serwer jeszcze nie jest otwarty i nie ma stałej ekipy
+      moderatorów. Dopóki jej nie będzie, nie zaprosimy obcych graczy. Regulamin, zasady
+      zgłaszania nadużyć i informacja o tym, jakie dane zapisujemy, pojawią się tutaj przed
+      otwarciem — nie po nim.
+    </div>
+  </div>
+</section>
+
+<section id="jak-wejsc">
+  <div class="srodek">
+    <h2>Jak wejść</h2>
+    <p class="podtytul">
+      Adres podamy w dniu otwarcia. Poniżej zostawiamy same kroki, żeby dało się
+      przygotować wcześniej.
+    </p>
+    <div class="dwie">
+      <div class="platforma">
+        <h3>Minecraft: Java Edition</h3>
+        <p class="kto">Komputer z Windowsem, macOS lub Linuksem</p>
+        <ol>
+          <li>Uruchom grę i wejdź w <b>Gra wieloosobowa</b>.</li>
+          <li>Wybierz <b>Dodaj serwer</b>.</li>
+          <li>W polu adresu wpisz adres serwera.<br>
+              <span class="adres-wkrotce">adres pojawi się tutaj przy otwarciu</span></li>
+          <li>Zapisz i dołącz.</li>
+        </ol>
+      </div>
+      <div class="platforma">
+        <h3>Minecraft: Bedrock Edition</h3>
+        <p class="kto">Telefon, tablet, konsola, Windows ze Sklepu</p>
+        <ol>
+          <li>Wejdź w <b>Graj</b>, potem w zakładkę <b>Serwery</b>.</li>
+          <li>Na dole wybierz <b>Dodaj serwer</b>.</li>
+          <li>Wpisz nazwę, adres oraz <b>port</b> <code>19132</code>.<br>
+              <span class="adres-wkrotce">adres pojawi się tutaj przy otwarciu</span></li>
+          <li>Zapisz i dołącz.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="uwaga">
+      <b>Dlaczego na Bedrocku trzeba podać port:</b> ta wersja gry nie obsługuje
+      automatycznego wyszukiwania adresu, którego używa Java. Nie da się tego obejść po
+      naszej stronie, dlatego port podajemy wprost.
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="srodek kontakt-blok">
+    <h2>Kontakt</h2>
+    <p class="podtytul" style="margin-left:auto;margin-right:auto">
+      Pytania od rodziców i zgłoszenia prosimy kierować na adres poniżej.
+      Odpowiadamy po polsku.
+    </p>
+    <a class="mail" href="mailto:kontakt@wielogrod.pl">kontakt@wielogrod.pl</a>
+  </div>
+</section>
+
+<footer>
+  <div class="srodek">
+    <p>Wielogród · serwer Minecraft dla dzieci i rodzin · wielogrod.pl</p>
+    <p>Serwis nie jest powiązany z Mojang Studios ani Microsoft. Minecraft jest znakiem towarowym Mojang Studios.</p>
+  </div>
+</footer>
+
+</body>
+</html>
