@@ -8,7 +8,10 @@
 <link rel="icon" href="ikona.png" type="image/png">
 <meta property="og:title" content="Galeria — Wielogród">
 <meta property="og:description" content="Zdjęcia z serwera Wielogród: miasto, zabytki i budowle graczy.">
-<meta property="og:image" content="https://wielogrod.pl/logo_baner.png">
+<meta property="og:image" content="https://wielogrod.pl/podglad.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pl_PL">
 <style>
@@ -70,6 +73,26 @@
      zatrzymac sie PONIZEJ przyklejonego naglowka, a nie pod nim. */
   section, .hero { scroll-margin-top: 90px; }
   .przyciski { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+  /* --- podglad zdjecia na pelny ekran (galeria) --- */
+  dialog.podglad { border: 0; padding: 0; background: transparent; max-width: 96vw; max-height: 96vh; }
+  dialog.podglad::backdrop { background: rgba(10, 13, 20, 0.92); }
+  dialog.podglad figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  dialog.podglad img { max-width: 96vw; max-height: 84vh; border-radius: 6px; display: block; }
+  dialog.podglad figcaption { color: var(--kamien); font-size: 15px; text-align: center; max-width: 70ch; }
+  dialog.podglad figcaption b { display: block; font-size: 17px; margin-bottom: 2px; }
+  dialog.podglad .zamknij {
+    position: fixed; top: 14px; right: 18px; background: var(--granat2); color: var(--kamien);
+    border: 1px solid var(--granat3); border-radius: 8px; font-size: 15px; padding: 8px 14px; cursor: pointer;
+  }
+  dialog.podglad .strzalka {
+    position: fixed; top: 50%; transform: translateY(-50%); background: var(--granat2);
+    color: var(--kamien); border: 1px solid var(--granat3); border-radius: 8px;
+    font-size: 22px; padding: 10px 14px; cursor: pointer; line-height: 1;
+  }
+  dialog.podglad .strzalka.lewa { left: 14px; }
+  dialog.podglad .strzalka.prawa { right: 14px; }
+  .galeria figure { cursor: zoom-in; }
+  .galeria figure:hover { border-color: var(--trawa); }
   .zdjecia { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
   .zdjecia a { display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--granat3);
                background: var(--granat2); color: var(--kamien); text-decoration: none; }
@@ -309,15 +332,53 @@
 <h1>Galeria</h1>
 <p class="metryka">Wszystko na zdjęciach zbudowaliśmy sami, blok po bloku.</p>
 <div class="galeria">
-<figure><img src="galeria/01-ratusz-rynek.jpg" alt="Ratusz z Rzeszowa" loading="lazy"><figcaption><b>Ratusz z Rzeszowa</b>Nasza własna budowla na Rynku, postawiona z proporcji odczytanych ze zdjęć. Wejście z flagami od strony placu, zegar w szczycie, balkony jak w oryginale.</figcaption></figure>
-<figure><img src="galeria/02-zamek-plac-zamkowy.jpg" alt="Zamek na Placu Zamkowym" loading="lazy"><figcaption><b>Zamek na Placu Zamkowym</b>Pierwszy kadr każdego nowego gracza. Tu stajesz po wejściu na serwer, z wieżą zegarową na wprost.</figcaption></figure>
-<figure><img src="galeria/03-kamienice.jpg" alt="Kamienice" loading="lazy"><figcaption><b>Kamienice</b>Pierzeja kamienic z własnego generatora: wykusze, balkony, okiennice i gzymsy, każda inna.</figcaption></figure>
-<figure><img src="galeria/04-twierdza.jpg" alt="Twierdza" loading="lazy"><figcaption><b>Twierdza</b>Pokaz wszystkich elementów muru miejskiego naraz: cokół, blanki, przypory, wieżyczki i brama z machikułami.</figcaption></figure>
-<figure><img src="galeria/05-dziedziniec-twierdzy.jpg" alt="Dziedziniec twierdzy" loading="lazy"><figcaption><b>Dziedziniec twierdzy</b>W środku studnia i latarnie tam, gdzie chodzi się nocą. Na murach patyna z mchu.</figcaption></figure>
-<figure><img src="galeria/06-bramy.jpg" alt="Bramy między światami" loading="lazy"><figcaption><b>Bramy między światami</b>Dwie bramy na Placu Zamkowym: do świata budowania i do osady w survivalu. Każda podpisana, każda z hologramem.</figcaption></figure>
-<figure><img src="galeria/07-brama-na-survival.jpg" alt="Za bramą zaczyna się survival" loading="lazy"><figcaption><b>Za bramą zaczyna się survival</b>Widok z bramy miasta na dzicz. Hologram mówi, jak zaznaczyć działkę złotą łopatą.</figcaption></figure>
-<figure><img src="galeria/08-tower-bridge.jpg" alt="Tower Bridge" loading="lazy"><figcaption><b>Tower Bridge</b>Model autorstwa polstyle z Planet Minecraft, przez nas przebudowany i wstawiony na rzekę. Autor zezwala na dowolne użycie.</figcaption></figure>
+<figure tabindex="0" role="button" aria-label="Powiększ: Ratusz z Rzeszowa" data-tytul="Ratusz z Rzeszowa" data-opis="Nasza własna budowla na Rynku, postawiona z proporcji odczytanych ze zdjęć. Wejście z flagami od strony placu, zegar w szczycie, balkony jak w oryginale."><img src="galeria/01-ratusz-rynek.jpg" alt="Ratusz z Rzeszowa" loading="lazy"><figcaption><b>Ratusz z Rzeszowa</b>Nasza własna budowla na Rynku, postawiona z proporcji odczytanych ze zdjęć. Wejście z flagami od strony placu, zegar w szczycie, balkony jak w oryginale.</figcaption></figure>
+<figure tabindex="0" role="button" aria-label="Powiększ: Zamek na Placu Zamkowym" data-tytul="Zamek na Placu Zamkowym" data-opis="Pierwszy kadr każdego nowego gracza. Tu stajesz po wejściu na serwer, z wieżą zegarową na wprost."><img src="galeria/02-zamek-plac-zamkowy.jpg" alt="Zamek na Placu Zamkowym" loading="lazy"><figcaption><b>Zamek na Placu Zamkowym</b>Pierwszy kadr każdego nowego gracza. Tu stajesz po wejściu na serwer, z wieżą zegarową na wprost.</figcaption></figure>
+<figure tabindex="0" role="button" aria-label="Powiększ: Kamienice" data-tytul="Kamienice" data-opis="Pierzeja kamienic z własnego generatora: wykusze, balkony, okiennice i gzymsy, każda inna."><img src="galeria/03-kamienice.jpg" alt="Kamienice" loading="lazy"><figcaption><b>Kamienice</b>Pierzeja kamienic z własnego generatora: wykusze, balkony, okiennice i gzymsy, każda inna.</figcaption></figure>
+<figure tabindex="0" role="button" aria-label="Powiększ: Twierdza" data-tytul="Twierdza" data-opis="Pokaz wszystkich elementów muru miejskiego naraz: cokół, blanki, przypory, wieżyczki i brama z machikułami."><img src="galeria/04-twierdza.jpg" alt="Twierdza" loading="lazy"><figcaption><b>Twierdza</b>Pokaz wszystkich elementów muru miejskiego naraz: cokół, blanki, przypory, wieżyczki i brama z machikułami.</figcaption></figure>
+<figure tabindex="0" role="button" aria-label="Powiększ: Dziedziniec twierdzy" data-tytul="Dziedziniec twierdzy" data-opis="W środku studnia i latarnie tam, gdzie chodzi się nocą. Na murach patyna z mchu."><img src="galeria/05-dziedziniec-twierdzy.jpg" alt="Dziedziniec twierdzy" loading="lazy"><figcaption><b>Dziedziniec twierdzy</b>W środku studnia i latarnie tam, gdzie chodzi się nocą. Na murach patyna z mchu.</figcaption></figure>
+<figure tabindex="0" role="button" aria-label="Powiększ: Bramy między światami" data-tytul="Bramy między światami" data-opis="Dwie bramy na Placu Zamkowym: do świata budowania i do osady w survivalu. Każda podpisana, każda z hologramem."><img src="galeria/06-bramy.jpg" alt="Bramy między światami" loading="lazy"><figcaption><b>Bramy między światami</b>Dwie bramy na Placu Zamkowym: do świata budowania i do osady w survivalu. Każda podpisana, każda z hologramem.</figcaption></figure>
+<figure tabindex="0" role="button" aria-label="Powiększ: Za bramą zaczyna się survival" data-tytul="Za bramą zaczyna się survival" data-opis="Widok z bramy miasta na dzicz. Hologram mówi, jak zaznaczyć działkę złotą łopatą."><img src="galeria/07-brama-na-survival.jpg" alt="Za bramą zaczyna się survival" loading="lazy"><figcaption><b>Za bramą zaczyna się survival</b>Widok z bramy miasta na dzicz. Hologram mówi, jak zaznaczyć działkę złotą łopatą.</figcaption></figure>
+<figure tabindex="0" role="button" aria-label="Powiększ: Tower Bridge" data-tytul="Tower Bridge" data-opis="Model autorstwa polstyle z Planet Minecraft, przez nas przebudowany i wstawiony na rzekę. Autor zezwala na dowolne użycie."><img src="galeria/08-tower-bridge.jpg" alt="Tower Bridge" loading="lazy"><figcaption><b>Tower Bridge</b>Model autorstwa polstyle z Planet Minecraft, przez nas przebudowany i wstawiony na rzekę. Autor zezwala na dowolne użycie.</figcaption></figure>
 </div>
+<dialog class="podglad" id="podglad" aria-label="Powiększone zdjęcie">
+  <button class="zamknij" type="button" data-akcja="zamknij">Zamknij ✕</button>
+  <button class="strzalka lewa" type="button" data-akcja="wstecz" aria-label="Poprzednie">‹</button>
+  <button class="strzalka prawa" type="button" data-akcja="dalej" aria-label="Następne">›</button>
+  <figure><img src="" alt=""><figcaption><b></b><span></span></figcaption></figure>
+</dialog>
+<script>
+(function () {
+  var kafle = Array.prototype.slice.call(document.querySelectorAll(".galeria figure"));
+  var d = document.getElementById("podglad");
+  if (!kafle.length || !d || !d.showModal) return;
+  var img = d.querySelector("img"), tyt = d.querySelector("figcaption b"), op = d.querySelector("figcaption span");
+  var biezacy = 0;
+  function pokaz(i) {
+    biezacy = (i + kafle.length) % kafle.length;
+    var k = kafle[biezacy], z = k.querySelector("img");
+    img.src = z.getAttribute("src"); img.alt = z.alt;
+    tyt.textContent = k.getAttribute("data-tytul") || ""; op.textContent = k.getAttribute("data-opis") || "";
+    if (!d.open) d.showModal();
+  }
+  kafle.forEach(function (k, i) {
+    k.addEventListener("click", function () { pokaz(i); });
+    k.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pokaz(i); } });
+  });
+  d.addEventListener("click", function (e) {
+    var a = e.target.getAttribute && e.target.getAttribute("data-akcja");
+    if (a === "zamknij") d.close();
+    else if (a === "dalej") pokaz(biezacy + 1);
+    else if (a === "wstecz") pokaz(biezacy - 1);
+    else if (e.target === d) d.close();          /* klikniecie w tlo poza zdjeciem */
+  });
+  d.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight") pokaz(biezacy + 1);
+    if (e.key === "ArrowLeft") pokaz(biezacy - 1);
+  });
+})();
+</script>
+
 </div>
 
 <footer>
