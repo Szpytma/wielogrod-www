@@ -222,6 +222,27 @@
     display: inline-block; margin-top: 4px;
     color: var(--helm); font-size: 15px;
   }
+  .adres-w-kroku { font-size: 16px; background: var(--granat3); padding: 2px 8px; border-radius: 4px; }
+
+  /* --- pasek adresu w hero --- */
+  .adres {
+    display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    gap: 8px 14px; margin: 18px auto 0; padding: 10px 16px;
+    background: rgba(32, 39, 54, 0.85); border: 1px solid var(--granat3); border-radius: 10px;
+    font-size: 15px;
+  }
+  .adres-etykieta { color: var(--kamien-cichy); text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; font-weight: 600; }
+  .adres-wartosc { font-size: 19px; font-weight: 700; color: var(--kamien); font-family: Consolas, "SF Mono", Menlo, monospace; letter-spacing: 0.02em; }
+  .adres-wkrotce-pasek .adres-wartosc { color: var(--kamien-cichy); font-family: inherit; font-weight: 600; }
+  .adres-start { color: var(--kamien-cichy); font-size: 14px; }
+  .adres-bedrock { color: var(--kamien-cichy); font-size: 13.5px; width: 100%; text-align: center; }
+  .adres-bedrock code { background: var(--granat3); padding: 1px 6px; border-radius: 4px; }
+  .kopiuj {
+    background: var(--trawa); color: var(--granat); border: 0; border-radius: 6px;
+    padding: 7px 14px; font-weight: 700; font-size: 14px; cursor: pointer;
+  }
+  .kopiuj:hover { background: var(--trawa2); }
+  .plakietka.otwarty { border-color: var(--trawa); color: var(--trawa2); }
 
   /* --- kontakt --- */
   .kontakt-blok { text-align: center; }
@@ -298,7 +319,14 @@
        alt="Wielogród — blok trawy z murem i wieżą">
   <h1 class="tylko-czytnik">Wielogród</h1>
   <p class="haslo">Zwiedzaj miasto, buduj za murami.</p>
-  <span class="plakietka">Serwer w przygotowaniu</span>
+<!-- WSPOLNE:ADRES -->
+<span class="plakietka">Serwer w przygotowaniu</span>
+<div class="adres adres-wkrotce-pasek" aria-live="polite">
+  <span class="adres-etykieta">Adres serwera</span>
+  <span class="adres-wartosc">wkrótce</span>
+  <span class="adres-start">start: termin ustalimy</span>
+</div>
+<!-- /WSPOLNE:ADRES -->
   <p class="wstep">
     Polski serwer Minecraft dla dzieci i rodzin. W środku miasto pełne odwzorowanych
     zabytków do zwiedzania, a poza murami zwykły survival, w którym można budować własne
@@ -436,7 +464,7 @@
           <li>Uruchom grę i wejdź w <b>Gra wieloosobowa</b>.</li>
           <li>Wybierz <b>Dodaj serwer</b>.</li>
           <li>W polu adresu wpisz adres serwera.<br>
-              <span class="adres-wkrotce">adres pojawi się tutaj przy otwarciu</span></li>
+              <!-- WSPOLNE:ADRES-JAVA --><span class="adres-wkrotce">adres pojawi się tutaj przy otwarciu</span><!-- /WSPOLNE:ADRES-JAVA --></li>
           <li>Zapisz i dołącz.</li>
         </ol>
       </div>
@@ -447,7 +475,7 @@
           <li>Wejdź w <b>Graj</b>, potem w zakładkę <b>Serwery</b>.</li>
           <li>Na dole wybierz <b>Dodaj serwer</b>.</li>
           <li>Wpisz nazwę, adres oraz <b>port</b> <code>19132</code>.<br>
-              <span class="adres-wkrotce">adres pojawi się tutaj przy otwarciu</span></li>
+              <!-- WSPOLNE:ADRES-BEDROCK --><span class="adres-wkrotce">adres pojawi się tutaj przy otwarciu</span><!-- /WSPOLNE:ADRES-BEDROCK --></li>
           <li>Zapisz i dołącz.</li>
         </ol>
       </div>
