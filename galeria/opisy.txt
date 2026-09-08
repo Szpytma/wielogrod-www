@@ -1,0 +1,9 @@
+# plik | Tytul | opis  (jedna linia na zdjecie; zdjecia bez wpisu tez sie pokaza, bez podpisu)
+01-ratusz-rynek.jpg | Ratusz z Rzeszowa | Nasza własna budowla na Rynku, postawiona z proporcji odczytanych ze zdjęć. Wejście z flagami od strony placu, zegar w szczycie, balkony jak w oryginale.
+02-zamek-plac-zamkowy.jpg | Zamek na Placu Zamkowym | Pierwszy kadr każdego nowego gracza. Tu stajesz po wejściu na serwer, z wieżą zegarową na wprost.
+03-kamienice.jpg | Kamienice | Pierzeja kamienic z własnego generatora: wykusze, balkony, okiennice i gzymsy, każda inna.
+04-twierdza.jpg | Twierdza | Pokaz wszystkich elementów muru miejskiego naraz: cokół, blanki, przypory, wieżyczki i brama z machikułami.
+05-dziedziniec-twierdzy.jpg | Dziedziniec twierdzy | W środku studnia i latarnie tam, gdzie chodzi się nocą. Na murach patyna z mchu.
+06-bramy.jpg | Bramy między światami | Dwie bramy na Placu Zamkowym: do świata budowania i do osady w survivalu. Każda podpisana, każda z hologramem.
+07-brama-na-survival.jpg | Za bramą zaczyna się survival | Widok z bramy miasta na dzicz. Hologram mówi, jak zaznaczyć działkę złotą łopatą.
+08-tower-bridge.jpg | Tower Bridge | Model autorstwa polstyle z Planet Minecraft, przez nas przebudowany i wstawiony na rzekę. Autor zezwala na dowolne użycie.

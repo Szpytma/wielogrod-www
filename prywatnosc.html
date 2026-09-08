@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prywatność — Wielogród</title>
+<meta name="description" content="Co serwer Wielogród zapisuje, po co, jak długo i jakie prawa mają gracz oraz rodzic.">
+<link rel="icon" href="ikona.png" type="image/png">
+<meta property="og:title" content="Prywatność — Wielogród">
+<meta property="og:description" content="Co serwer Wielogród zapisuje, po co, jak długo i jakie prawa mają gracz oraz rodzic.">
+<meta property="og:image" content="https://wielogrod.pl/logo_baner.png">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pl_PL">
+<style>
+  /* Paleta znaku (docs/brand/README.md) */
+  :root {
+    --granat:  #181D28;
+    --granat2: #202736;
+    --granat3: #2A3244;
+    --kamien:  #EEE8D8;
+    --kamien-cichy: #A8A79C;
+    --helm:    #D64638;
+    --trawa:   #60A038;
+    --trawa2:  #7CBF4A;
+    --ziemia:  #86603F;
+    --maks: 1080px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--granat);
+    color: var(--kamien);
+    font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--trawa2); }
+  a:hover { color: var(--kamien); }
+
+  .srodek { width: 100%; max-width: var(--maks); margin: 0 auto; padding: 0 24px; }
+
+  /* --- nagłówek --- */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(24, 29, 40, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--granat3);
+  }
+  .pasek { display: flex; align-items: center; gap: 12px; min-height: 62px; padding-top: 10px; padding-bottom: 10px; }
+  .pasek img { width: 34px; height: 34px; image-rendering: auto; }
+  .marka {
+    font-weight: 700; letter-spacing: 0.16em; font-size: 15px;
+    text-transform: uppercase;
+  }
+  .pasek { flex-wrap: wrap; }
+  .pasek .marka-link { display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none; }
+  .pasek nav { margin-left: auto; display: flex; flex-wrap: wrap; gap: 6px 4px; font-size: 15px; }
+  .pasek nav a { color: var(--kamien-cichy); text-decoration: none; padding: 6px 10px; border-radius: 6px; }
+  .pasek nav a:hover { color: var(--kamien); background: var(--granat3); }
+  /* Strona, na ktorej jestes, jest podswietlona - bez tego piec podobnych slow w pasku
+     nie mowi czytelnikowi, gdzie sie znajduje. */
+  .pasek nav a.tu { color: var(--kamien); background: var(--granat3); }
+  /* Sekcje strony glownej otwiera sie z hero i przewijaniem, nie z paska. Kotwica musi
+     zatrzymac sie PONIZEJ przyklejonego naglowka, a nie pod nim. */
+  section, .hero { scroll-margin-top: 90px; }
+  .przyciski { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+  .zdjecia { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .zdjecia a { display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--granat3);
+               background: var(--granat2); color: var(--kamien); text-decoration: none; }
+  .zdjecia a:hover { border-color: var(--trawa); }
+  .zdjecia img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .zdjecia span { display: block; padding: 10px 12px 12px; font-size: 14.5px; font-weight: 600; }
+  .wiecej { text-align: center; margin: 22px 0 0; }
+  .przycisk {
+    display: inline-block; padding: 12px 22px; border-radius: 8px; font-weight: 700;
+    text-decoration: none; background: var(--trawa); color: var(--granat);
+  }
+  .przycisk:hover { background: var(--trawa2); color: var(--granat); }
+  .przycisk.drugi { background: transparent; color: var(--kamien); border: 1px solid var(--granat3); }
+  .przycisk.drugi:hover { background: var(--granat3); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  /* --- hero --- */
+  .hero-tlo {
+    background:
+      linear-gradient(to bottom, rgba(24,29,40,0.72) 0%, rgba(24,29,40,0.55) 45%, rgba(24,29,40,0.96) 100%),
+      url("hero.jpg") center 42% / cover no-repeat;
+    border-bottom: 1px solid var(--granat3);
+  }
+  .hero { padding: 72px 0 64px; text-align: center; }
+  .hero .wstep { text-shadow: 0 1px 8px rgba(0,0,0,0.6); }
+  .hero img.znak {
+    width: 100%; max-width: 470px; height: auto;
+    margin: 0 auto 22px; display: block;
+    filter: drop-shadow(0 10px 26px rgba(0,0,0,0.45));
+  }
+  /* Nazwa serwera jest juz w banerze. Naglowek H1 zostaje w kodzie dla czytnikow
+     ekranu i wyszukiwarek, ale nie jest widoczny - inaczej napis dublowalby sie. */
+  .tylko-czytnik {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+  .haslo {
+    margin: 0 auto 26px; max-width: 34ch;
+    font-size: clamp(18px, 3.4vw, 22px);
+    color: var(--trawa2);
+  }
+  .plakietka {
+    display: inline-block;
+    border: 1px solid var(--helm);
+    color: var(--helm);
+    border-radius: 999px;
+    padding: 7px 18px;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .wstep {
+    margin: 30px auto 0; max-width: 62ch;
+    color: var(--kamien-cichy);
+  }
+
+  /* --- sekcje --- */
+  section { padding: 58px 0; border-top: 1px solid var(--granat3); }
+  h2 {
+    margin: 0 0 8px;
+    font-size: clamp(24px, 4.4vw, 32px);
+    letter-spacing: 0.02em;
+  }
+  .podtytul { margin: 0 0 34px; color: var(--kamien-cichy); max-width: 62ch; }
+
+  .kafle { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); }
+  .kafel {
+    background: var(--granat2);
+    border: 1px solid var(--granat3);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .kafel h3 { margin: 0 0 10px; font-size: 19px; }
+  .kafel p  { margin: 0; color: var(--kamien-cichy); font-size: 16px; }
+  .kafel .ikonka { font-size: 26px; line-height: 1; margin-bottom: 14px; display: block; }
+
+  /* --- lista dla rodziców --- */
+  .lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+  .lista li { display: flex; gap: 14px; align-items: flex-start; }
+  .lista .tak {
+    flex: 0 0 auto; margin-top: 3px;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--trawa); color: var(--granat);
+    font-size: 13px; font-weight: 700;
+    display: grid; place-items: center;
+  }
+  .lista b { color: var(--kamien); }
+  .lista span.tresc { color: var(--kamien-cichy); }
+
+  .uwaga {
+    margin-top: 30px;
+    border-left: 3px solid var(--ziemia);
+    background: var(--granat2);
+    padding: 18px 22px;
+    border-radius: 0 10px 10px 0;
+    color: var(--kamien-cichy);
+    font-size: 16px;
+  }
+  .uwaga b { color: var(--kamien); }
+
+  /* --- jak wejść --- */
+  .dwie { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .platforma {
+    background: var(--granat2);
+    border: 1px solid var(--granat3);
+    border-radius: 12px;
+    padding: 26px;
+  }
+  .platforma h3 { margin: 0 0 4px; font-size: 20px; }
+  .platforma .kto { margin: 0 0 18px; color: var(--trawa2); font-size: 15px; }
+  .platforma ol { margin: 0; padding-left: 20px; color: var(--kamien-cichy); font-size: 16px; }
+  .platforma ol li { margin-bottom: 8px; }
+  code {
+    background: var(--granat);
+    border: 1px solid var(--granat3);
+    border-radius: 6px;
+    padding: 2px 7px;
+    font-family: Consolas, "SF Mono", Menlo, monospace;
+    font-size: 0.92em;
+    color: var(--kamien);
+  }
+  .adres-wkrotce {
+    display: inline-block; margin-top: 4px;
+    color: var(--helm); font-size: 15px;
+  }
+
+  /* --- kontakt --- */
+  .kontakt-blok { text-align: center; }
+  .kontakt-blok .mail {
+    display: inline-block; margin-top: 6px;
+    font-size: clamp(19px, 3.6vw, 25px);
+    font-weight: 600;
+    color: var(--trawa2);
+    text-decoration: none;
+    border-bottom: 2px solid var(--granat3);
+    padding-bottom: 3px;
+  }
+  .kontakt-blok .mail:hover { color: var(--kamien); border-bottom-color: var(--trawa); }
+
+  /* --- kanaly --- */
+  .kanaly {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    justify-content: center;
+    margin: 26px 0 0;
+    padding: 0; list-style: none;
+  }
+  .kanaly a {
+    display: inline-block;
+    padding: 9px 18px;
+    border: 1px solid var(--granat3);
+    border-radius: 999px;
+    background: var(--granat2);
+    color: var(--kamien);
+    text-decoration: none;
+    font-size: 15px;
+  }
+  .kanaly a:hover { border-color: var(--trawa); color: var(--trawa2); }
+  .kanaly-nota {
+    margin: 20px auto 0; max-width: 56ch;
+    font-size: 15px; color: var(--kamien-cichy);
+  }
+
+  footer {
+    border-top: 1px solid var(--granat3);
+    padding: 30px 0 44px;
+    color: #6E7382;
+    font-size: 14px;
+    text-align: center;
+  }
+  footer p { margin: 4px 0; }
+
+  @media (max-width: 620px) {
+    body { font-size: 16px; }
+    /* Nawigacja na telefonie ZAWIJA SIE zamiast znikac. Wczesniej byla ukryta,
+       a jedyna droga do regulaminu wiodla przez stopke - tymczasem to wlasnie
+       rodzic na telefonie szuka regulaminu najczesciej. */
+    .pasek nav { width: 100%; margin-left: 0; font-size: 14px; gap: 4px 2px; }
+    .pasek nav a { padding: 6px 8px; }
+    section, .hero { scroll-margin-top: 120px; }
+    .hero { padding: 48px 0 44px; }
+    section { padding: 44px 0; }
+  }
+
+  /* --- podstrony: dokument i galeria --- */
+  .dokument { max-width: 760px; margin: 0 auto; padding: 34px 20px 70px; }
+  .dokument h1 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 6px; }
+  .dokument h2 { font-size: 21px; margin: 34px 0 10px; padding-top: 16px;
+                 border-top: 1px solid var(--granat3); }
+  .dokument h2:first-of-type { border-top: 0; padding-top: 0; }
+  .dokument h3 { font-size: 17px; margin: 24px 0 6px; }
+  .dokument p, .dokument li { line-height: 1.65; }
+  .dokument ul, .dokument ol { padding-left: 22px; }
+  .dokument li { margin-bottom: 7px; }
+  .dokument code { background: var(--granat3); padding: 1px 5px; border-radius: 3px;
+                   font-family: Consolas, "SF Mono", Menlo, monospace; font-size: .9em; }
+  .dokument pre { background: var(--granat2); border: 1px solid var(--granat3);
+                  border-radius: 6px; padding: 14px 16px; overflow-x: auto; font-size: 14px; }
+  .dokument pre code { background: none; padding: 0; }
+  .dokument blockquote { margin: 0 0 16px; padding: 4px 0 4px 18px;
+                         border-left: 3px solid var(--trawa); color: var(--kamien-cichy); }
+  .dokument hr { border: 0; border-top: 1px solid var(--granat3); margin: 30px 0; }
+  .dokument a { color: var(--trawa2); }
+  .tabelka { overflow-x: auto; margin: 0 0 20px; }
+  .dokument table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  .dokument th { text-align: left; padding: 9px 14px 9px 0;
+                 border-bottom: 2px solid var(--granat3); }
+  .dokument td { padding: 9px 14px 9px 0; border-bottom: 1px solid var(--granat3);
+                 vertical-align: top; }
+  .metryka { color: var(--kamien-cichy); font-size: 14px; margin: 0 0 26px;
+             padding-bottom: 16px; border-bottom: 1px solid var(--granat3); }
+  .wroc { display: inline-block; margin-bottom: 18px; color: var(--kamien-cichy);
+          text-decoration: none; font-size: 14px; }
+  .wroc:hover { color: var(--kamien); }
+
+  .galeria { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  .galeria figure { margin: 0; background: var(--granat2); border: 1px solid var(--granat3);
+                    border-radius: 8px; overflow: hidden; }
+  .galeria img { display: block; width: 100%; height: auto; background: var(--granat3); }
+  .galeria figcaption { padding: 12px 14px 14px; font-size: 14.5px; line-height: 1.5; }
+  .galeria figcaption b { display: block; margin-bottom: 3px; }
+  .galeria-pusta { background: var(--granat2); border: 1px dashed var(--granat3);
+                   border-radius: 8px; padding: 26px; color: var(--kamien-cichy); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="srodek pasek">
+    <a class="marka-link" href="index.html"><img src="ikona.png" alt=""><span class="marka">Wielogród</span></a>
+    <nav aria-label="Strony serwisu"><a href="index.html">Start</a><a href="galeria.html">Galeria</a><a href="komendy.html">Komendy</a><a href="regulamin.html">Regulamin</a><a href="prywatnosc.html" class="tu" aria-current="page">Prywatność</a></nav>
+  </div>
+</header>
+
+<div class="dokument">
+<h1>Polityka prywatności serwera Wielogród</h1>
+<p class="metryka"><strong>Wersja:</strong> 1.0 · <strong>Ostatnia zmiana:</strong> 2026-09-08 · Uzupełnia <a href="regulamin.html">regulamin</a></p>
+<p>Ten dokument mówi, <strong>jakie dane serwer zapisuje, po co, jak długo i kto ma do nich dostęp</strong>. Nie jest streszczeniem cudzej polityki: każda pozycja niżej została sprawdzona w konfiguracji serwera, a nie przepisana z szablonu.</p>
+<p>Krótko na wstępie, bo to najczęstsze pytanie rodzica: <strong>nie zbieramy nazwisk, adresów, numerów telefonu ani zdjęć. Nie ma reklam. Nie sprzedajemy nikomu żadnych danych. Strona <code>wielogrod.pl</code> nie ma ciasteczek ani żadnych narzędzi śledzących.</strong></p>
+<hr>
+<h2>1. Kto odpowiada za dane</h2>
+<div class="tabelka"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Administrator</td><td>osoba prywatna, właściciel serwera Wielogród</td></tr><tr><td>Kontakt</td><td><code>kontakt@wielogrod.pl</code></td></tr><tr><td>Gdzie dane są dziś</td><td>komputer właściciela w Wielkiej Brytanii</td></tr><tr><td>Gdzie będą po przenosinach</td><td>serwerownia w Niemczech albo w Polsce</td></tr></tbody></table></div>
+<p>Gracze są w Polsce, a właściciel mieszka w Wielkiej Brytanii, więc stosujemy zarówno brytyjskie, jak i unijne przepisy o ochronie danych. Skargę można złożyć do organu w obu krajach: brytyjskiego ICO oraz polskiego Prezesa UODO.</p>
+<hr>
+<h2>2. Co zapisujemy i po co</h2>
+<div class="tabelka"><table><thead><tr><th>Dane</th><th>Skąd się biorą</th><th>Po co</th><th>Jak długo</th></tr></thead><tbody><tr><td>Nick i identyfikator konta (UUID)</td><td>wejście do gry</td><td>rozpoznanie gracza, uprawnienia, działki</td><td>do usunięcia konta</td></tr><tr><td>Nick konta Xbox (gracze Bedrock)</td><td>Floodgate przy wejściu</td><td>rozpoznanie gracza z telefonu i konsoli</td><td>do usunięcia konta</td></tr><tr><td>Adres IP</td><td>wejście do gry, logi serwera, plik gracza</td><td>działanie połączenia, blokowanie osób wracających po banie</td><td>30 dni w logach, w pliku gracza do usunięcia konta</td></tr><tr><td>Historia zmian bloków</td><td>CoreProtect</td><td>cofanie zniszczeń, rozpatrywanie zgłoszeń</td><td>30 dni</td></tr><tr><td>Wiadomości z czatu i użyte komendy</td><td>CoreProtect, logi serwera</td><td>rozpatrywanie zgłoszeń, bezpieczeństwo dzieci</td><td>30 dni</td></tr><tr><td>Wejścia i wyjścia z serwera</td><td>CoreProtect, logi</td><td>moderacja, diagnostyka awarii</td><td>30 dni</td></tr><tr><td>Działki, uprawnienia, grupa</td><td>GriefPrevention, LuckPerms</td><td>działanie gry</td><td>do usunięcia konta</td></tr><tr><td>Skórka postaci</td><td>SkinsRestorer</td><td>wygląd postaci na obu edycjach</td><td>do usunięcia konta</td></tr><tr><td>Miejsce ostatniego wylogowania, dom, warpy</td><td>Essentials</td><td>żeby gra działała normalnie</td><td>do usunięcia konta</td></tr><tr><td>Adres e-mail rodzica</td><td>zgłoszenie na whitelistę</td><td>zgoda na grę dziecka i kontakt</td><td>do usunięcia konta dziecka</td></tr></tbody></table></div>
+<p>Filtr czatu <strong>blokuje adresy e-mail, numery telefonu, adresy zamieszkania i linki</strong>, więc takie dane w większości nie trafiają nawet do zapisu rozmów. Gdy jednak coś przejdzie, obowiązuje ten sam okres przechowywania co dla reszty czatu.</p>
+<p><strong>Czego nie zapisujemy w ogóle:</strong> nazwiska, adresu zamieszkania, numeru telefonu, daty urodzenia, zdjęć, nagrań głosu, danych karty. Sklepu nie ma, więc nie ma też danych płatniczych. Nie profilujemy nikogo i nie podejmujemy wobec graczy żadnych decyzji automatycznie poza jedną: <strong>filtr czatu może wyciszyć na kilka minut</strong>. Filtr nigdy nie blokuje konta na stałe, o tym decyduje człowiek.</p>
+<hr>
+<h2>3. Na jakiej podstawie</h2>
+<ul><li><strong>Zgoda rodzica</strong> przy dołączeniu dziecka. Zgodę można wycofać w każdej chwili jednym mailem, a wtedy usuwamy konto razem z danymi.</li><li><strong>Uzasadniony interes</strong> przy danych potrzebnych do bezpieczeństwa: historia bloków, czat, adres IP. Bez nich nie da się cofnąć zniszczeń ani sprawdzić zgłoszenia, a serwer jest dla dzieci, więc bezpieczeństwo przeważa.</li><li><strong>Wykonanie zasad</strong>, na które gracz się zgadza wchodząc, czyli regulaminu.</li></ul>
+<hr>
+<h2>4. Kto ma dostęp</h2>
+<ul><li><strong>Właściciel</strong> — do wszystkiego.</li><li><strong>Moderatorzy</strong> — do narzędzi w grze: podglądu historii bloków, czatu, wyciszeń i czasowych blokad. Żaden moderator <strong>nie ma OP</strong> i nie ma dostępu do plików serwera.</li><li><strong>Nikt inny.</strong> Danych nie przekazujemy nikomu w celach marketingowych, bo nie prowadzimy marketingu opartego na danych.</li></ul>
+<p>Wyjątki, w których dane wyjdą poza serwer:</p>
+<ol><li><strong>Podejrzenie przestępstwa wobec dziecka</strong> — przekazujemy policji i wyspecjalizowanym służbom. Tryb postępowania opisuje instrukcja reagowania.</li><li><strong>Firma hostingowa</strong> po przenosinach serwera. Widzi pliki na swoim sprzęcie, działa na nasze zlecenie i nie może używać danych do własnych celów.</li><li><strong>Discord</strong>, jeśli gracz do niego dołączy. To osobna firma z własną polityką i własnym wymogiem wieku 13 lat. Nie musisz mieć Discorda, żeby grać.</li></ol>
+<hr>
+<h2>5. Jak długo trzymamy dane</h2>
+<div class="tabelka"><table><thead><tr><th>Rodzaj</th><th>Okres</th><th>Jak to działa</th></tr></thead><tbody><tr><td>Logi serwera</td><td>30 dni</td><td>starsze pliki są kasowane automatycznie, co tydzień</td></tr><tr><td>Historia bloków, czat, komendy</td><td>30 dni</td><td>cotygodniowe czyszczenie, automatyczne</td></tr><tr><td>Kopie zapasowe</td><td>7 ostatnich</td><td>najstarsza znika, gdy powstaje nowa</td></tr><tr><td>Plik gracza, działki, uprawnienia</td><td>do usunięcia konta</td><td>usuwane na żądanie</td></tr></tbody></table></div>
+<p>Kopia zapasowa może zawierać dane z okresu do tygodnia wstecz. Po usunięciu konta dane znikną z kopii najpóźniej po tygodniu, gdy stare kopie zostaną wyparte przez nowe.</p>
+<hr>
+<h2>6. Prawa gracza i rodzica</h2>
+<p>Możesz poprosić o:</p>
+<ul><li><strong>dostęp</strong> — wypiszemy, co mamy o twoim koncie,</li><li><strong>poprawienie</strong> — jeśli coś się nie zgadza,</li><li><strong>usunięcie konta i danych</strong> — robimy bez pytania o powód,</li><li><strong>sprzeciw</strong> wobec zapisywania czatu i historii bloków. Uczciwie: bez nich nie da się prowadzić bezpiecznego serwera dla dzieci, więc taki sprzeciw w praktyce oznacza rezygnację z gry. Wolimy powiedzieć to wprost, niż obiecać coś, czego nie dowieziemy.</li></ul>
+<p>Wystarczy mail na <code>kontakt@wielogrod.pl</code>. Odpowiadamy <strong>w ciągu 5 dni roboczych</strong>, a żądanie usunięcia wykonujemy <strong>w ciągu 7 dni roboczych</strong>. Rodzic może zgłosić żądanie za dziecko.</p>
+<p>Jeśli uważasz, że postępujemy niewłaściwie, możesz złożyć skargę do organu ochrony danych: w Polsce Prezes UODO, w Wielkiej Brytanii ICO.</p>
+<hr>
+<h2>7. Zmiany</h2>
+<p>Zmiany zapisujemy w tym dokumencie razem z datą i numerem wersji. Poprzednie wersje przechowujemy i udostępniamy na prośbę. O zmianie istotnej informujemy w grze i na Discordzie <strong>przed</strong> jej wejściem w życie.</p>
+</div>
+
+<footer>
+  <div class="srodek">
+    <p>Wielogród · serwer Minecraft dla dzieci i rodzin · wielogrod.pl</p>
+    <p>Pytania i zgłoszenia: <a href="mailto:kontakt@wielogrod.pl">kontakt@wielogrod.pl</a></p>
+    <p>Serwis nie jest powiązany z Mojang Studios ani Microsoft. Minecraft jest znakiem towarowym Mojang Studios.</p>
+  </div>
+</footer>
+
+</body>
+</html>

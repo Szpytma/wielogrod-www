@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regulamin — Wielogród</title>
+<meta name="description" content="Zasady serwera Wielogród: zachowanie, bezpieczeństwo dzieci, kary i zgłaszanie nadużyć.">
+<link rel="icon" href="ikona.png" type="image/png">
+<meta property="og:title" content="Regulamin — Wielogród">
+<meta property="og:description" content="Zasady serwera Wielogród: zachowanie, bezpieczeństwo dzieci, kary i zgłaszanie nadużyć.">
+<meta property="og:image" content="https://wielogrod.pl/logo_baner.png">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pl_PL">
+<style>
+  /* Paleta znaku (docs/brand/README.md) */
+  :root {
+    --granat:  #181D28;
+    --granat2: #202736;
+    --granat3: #2A3244;
+    --kamien:  #EEE8D8;
+    --kamien-cichy: #A8A79C;
+    --helm:    #D64638;
+    --trawa:   #60A038;
+    --trawa2:  #7CBF4A;
+    --ziemia:  #86603F;
+    --maks: 1080px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--granat);
+    color: var(--kamien);
+    font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--trawa2); }
+  a:hover { color: var(--kamien); }
+
+  .srodek { width: 100%; max-width: var(--maks); margin: 0 auto; padding: 0 24px; }
+
+  /* --- nagłówek --- */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(24, 29, 40, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--granat3);
+  }
+  .pasek { display: flex; align-items: center; gap: 12px; min-height: 62px; padding-top: 10px; padding-bottom: 10px; }
+  .pasek img { width: 34px; height: 34px; image-rendering: auto; }
+  .marka {
+    font-weight: 700; letter-spacing: 0.16em; font-size: 15px;
+    text-transform: uppercase;
+  }
+  .pasek { flex-wrap: wrap; }
+  .pasek .marka-link { display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none; }
+  .pasek nav { margin-left: auto; display: flex; flex-wrap: wrap; gap: 6px 4px; font-size: 15px; }
+  .pasek nav a { color: var(--kamien-cichy); text-decoration: none; padding: 6px 10px; border-radius: 6px; }
+  .pasek nav a:hover { color: var(--kamien); background: var(--granat3); }
+  /* Strona, na ktorej jestes, jest podswietlona - bez tego piec podobnych slow w pasku
+     nie mowi czytelnikowi, gdzie sie znajduje. */
+  .pasek nav a.tu { color: var(--kamien); background: var(--granat3); }
+  /* Sekcje strony glownej otwiera sie z hero i przewijaniem, nie z paska. Kotwica musi
+     zatrzymac sie PONIZEJ przyklejonego naglowka, a nie pod nim. */
+  section, .hero { scroll-margin-top: 90px; }
+  .przyciski { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+  .zdjecia { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .zdjecia a { display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--granat3);
+               background: var(--granat2); color: var(--kamien); text-decoration: none; }
+  .zdjecia a:hover { border-color: var(--trawa); }
+  .zdjecia img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .zdjecia span { display: block; padding: 10px 12px 12px; font-size: 14.5px; font-weight: 600; }
+  .wiecej { text-align: center; margin: 22px 0 0; }
+  .przycisk {
+    display: inline-block; padding: 12px 22px; border-radius: 8px; font-weight: 700;
+    text-decoration: none; background: var(--trawa); color: var(--granat);
+  }
+  .przycisk:hover { background: var(--trawa2); color: var(--granat); }
+  .przycisk.drugi { background: transparent; color: var(--kamien); border: 1px solid var(--granat3); }
+  .przycisk.drugi:hover { background: var(--granat3); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  /* --- hero --- */
+  .hero-tlo {
+    background:
+      linear-gradient(to bottom, rgba(24,29,40,0.72) 0%, rgba(24,29,40,0.55) 45%, rgba(24,29,40,0.96) 100%),
+      url("hero.jpg") center 42% / cover no-repeat;
+    border-bottom: 1px solid var(--granat3);
+  }
+  .hero { padding: 72px 0 64px; text-align: center; }
+  .hero .wstep { text-shadow: 0 1px 8px rgba(0,0,0,0.6); }
+  .hero img.znak {
+    width: 100%; max-width: 470px; height: auto;
+    margin: 0 auto 22px; display: block;
+    filter: drop-shadow(0 10px 26px rgba(0,0,0,0.45));
+  }
+  /* Nazwa serwera jest juz w banerze. Naglowek H1 zostaje w kodzie dla czytnikow
+     ekranu i wyszukiwarek, ale nie jest widoczny - inaczej napis dublowalby sie. */
+  .tylko-czytnik {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+  .haslo {
+    margin: 0 auto 26px; max-width: 34ch;
+    font-size: clamp(18px, 3.4vw, 22px);
+    color: var(--trawa2);
+  }
+  .plakietka {
+    display: inline-block;
+    border: 1px solid var(--helm);
+    color: var(--helm);
+    border-radius: 999px;
+    padding: 7px 18px;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .wstep {
+    margin: 30px auto 0; max-width: 62ch;
+    color: var(--kamien-cichy);
+  }
+
+  /* --- sekcje --- */
+  section { padding: 58px 0; border-top: 1px solid var(--granat3); }
+  h2 {
+    margin: 0 0 8px;
+    font-size: clamp(24px, 4.4vw, 32px);
+    letter-spacing: 0.02em;
+  }
+  .podtytul { margin: 0 0 34px; color: var(--kamien-cichy); max-width: 62ch; }
+
+  .kafle { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); }
+  .kafel {
+    background: var(--granat2);
+    border: 1px solid var(--granat3);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .kafel h3 { margin: 0 0 10px; font-size: 19px; }
+  .kafel p  { margin: 0; color: var(--kamien-cichy); font-size: 16px; }
+  .kafel .ikonka { font-size: 26px; line-height: 1; margin-bottom: 14px; display: block; }
+
+  /* --- lista dla rodziców --- */
+  .lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+  .lista li { display: flex; gap: 14px; align-items: flex-start; }
+  .lista .tak {
+    flex: 0 0 auto; margin-top: 3px;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--trawa); color: var(--granat);
+    font-size: 13px; font-weight: 700;
+    display: grid; place-items: center;
+  }
+  .lista b { color: var(--kamien); }
+  .lista span.tresc { color: var(--kamien-cichy); }
+
+  .uwaga {
+    margin-top: 30px;
+    border-left: 3px solid var(--ziemia);
+    background: var(--granat2);
+    padding: 18px 22px;
+    border-radius: 0 10px 10px 0;
+    color: var(--kamien-cichy);
+    font-size: 16px;
+  }
+  .uwaga b { color: var(--kamien); }
+
+  /* --- jak wejść --- */
+  .dwie { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .platforma {
+    background: var(--granat2);
+    border: 1px solid var(--granat3);
+    border-radius: 12px;
+    padding: 26px;
+  }
+  .platforma h3 { margin: 0 0 4px; font-size: 20px; }
+  .platforma .kto { margin: 0 0 18px; color: var(--trawa2); font-size: 15px; }
+  .platforma ol { margin: 0; padding-left: 20px; color: var(--kamien-cichy); font-size: 16px; }
+  .platforma ol li { margin-bottom: 8px; }
+  code {
+    background: var(--granat);
+    border: 1px solid var(--granat3);
+    border-radius: 6px;
+    padding: 2px 7px;
+    font-family: Consolas, "SF Mono", Menlo, monospace;
+    font-size: 0.92em;
+    color: var(--kamien);
+  }
+  .adres-wkrotce {
+    display: inline-block; margin-top: 4px;
+    color: var(--helm); font-size: 15px;
+  }
+
+  /* --- kontakt --- */
+  .kontakt-blok { text-align: center; }
+  .kontakt-blok .mail {
+    display: inline-block; margin-top: 6px;
+    font-size: clamp(19px, 3.6vw, 25px);
+    font-weight: 600;
+    color: var(--trawa2);
+    text-decoration: none;
+    border-bottom: 2px solid var(--granat3);
+    padding-bottom: 3px;
+  }
+  .kontakt-blok .mail:hover { color: var(--kamien); border-bottom-color: var(--trawa); }
+
+  /* --- kanaly --- */
+  .kanaly {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    justify-content: center;
+    margin: 26px 0 0;
+    padding: 0; list-style: none;
+  }
+  .kanaly a {
+    display: inline-block;
+    padding: 9px 18px;
+    border: 1px solid var(--granat3);
+    border-radius: 999px;
+    background: var(--granat2);
+    color: var(--kamien);
+    text-decoration: none;
+    font-size: 15px;
+  }
+  .kanaly a:hover { border-color: var(--trawa); color: var(--trawa2); }
+  .kanaly-nota {
+    margin: 20px auto 0; max-width: 56ch;
+    font-size: 15px; color: var(--kamien-cichy);
+  }
+
+  footer {
+    border-top: 1px solid var(--granat3);
+    padding: 30px 0 44px;
+    color: #6E7382;
+    font-size: 14px;
+    text-align: center;
+  }
+  footer p { margin: 4px 0; }
+
+  @media (max-width: 620px) {
+    body { font-size: 16px; }
+    /* Nawigacja na telefonie ZAWIJA SIE zamiast znikac. Wczesniej byla ukryta,
+       a jedyna droga do regulaminu wiodla przez stopke - tymczasem to wlasnie
+       rodzic na telefonie szuka regulaminu najczesciej. */
+    .pasek nav { width: 100%; margin-left: 0; font-size: 14px; gap: 4px 2px; }
+    .pasek nav a { padding: 6px 8px; }
+    section, .hero { scroll-margin-top: 120px; }
+    .hero { padding: 48px 0 44px; }
+    section { padding: 44px 0; }
+  }
+
+  /* --- podstrony: dokument i galeria --- */
+  .dokument { max-width: 760px; margin: 0 auto; padding: 34px 20px 70px; }
+  .dokument h1 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 6px; }
+  .dokument h2 { font-size: 21px; margin: 34px 0 10px; padding-top: 16px;
+                 border-top: 1px solid var(--granat3); }
+  .dokument h2:first-of-type { border-top: 0; padding-top: 0; }
+  .dokument h3 { font-size: 17px; margin: 24px 0 6px; }
+  .dokument p, .dokument li { line-height: 1.65; }
+  .dokument ul, .dokument ol { padding-left: 22px; }
+  .dokument li { margin-bottom: 7px; }
+  .dokument code { background: var(--granat3); padding: 1px 5px; border-radius: 3px;
+                   font-family: Consolas, "SF Mono", Menlo, monospace; font-size: .9em; }
+  .dokument pre { background: var(--granat2); border: 1px solid var(--granat3);
+                  border-radius: 6px; padding: 14px 16px; overflow-x: auto; font-size: 14px; }
+  .dokument pre code { background: none; padding: 0; }
+  .dokument blockquote { margin: 0 0 16px; padding: 4px 0 4px 18px;
+                         border-left: 3px solid var(--trawa); color: var(--kamien-cichy); }
+  .dokument hr { border: 0; border-top: 1px solid var(--granat3); margin: 30px 0; }
+  .dokument a { color: var(--trawa2); }
+  .tabelka { overflow-x: auto; margin: 0 0 20px; }
+  .dokument table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  .dokument th { text-align: left; padding: 9px 14px 9px 0;
+                 border-bottom: 2px solid var(--granat3); }
+  .dokument td { padding: 9px 14px 9px 0; border-bottom: 1px solid var(--granat3);
+                 vertical-align: top; }
+  .metryka { color: var(--kamien-cichy); font-size: 14px; margin: 0 0 26px;
+             padding-bottom: 16px; border-bottom: 1px solid var(--granat3); }
+  .wroc { display: inline-block; margin-bottom: 18px; color: var(--kamien-cichy);
+          text-decoration: none; font-size: 14px; }
+  .wroc:hover { color: var(--kamien); }
+
+  .galeria { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  .galeria figure { margin: 0; background: var(--granat2); border: 1px solid var(--granat3);
+                    border-radius: 8px; overflow: hidden; }
+  .galeria img { display: block; width: 100%; height: auto; background: var(--granat3); }
+  .galeria figcaption { padding: 12px 14px 14px; font-size: 14.5px; line-height: 1.5; }
+  .galeria figcaption b { display: block; margin-bottom: 3px; }
+  .galeria-pusta { background: var(--granat2); border: 1px dashed var(--granat3);
+                   border-radius: 8px; padding: 26px; color: var(--kamien-cichy); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="srodek pasek">
+    <a class="marka-link" href="index.html"><img src="ikona.png" alt=""><span class="marka">Wielogród</span></a>
+    <nav aria-label="Strony serwisu"><a href="index.html">Start</a><a href="galeria.html">Galeria</a><a href="komendy.html">Komendy</a><a href="regulamin.html" class="tu" aria-current="page">Regulamin</a><a href="prywatnosc.html">Prywatność</a></nav>
+  </div>
+</header>
+
+<div class="dokument">
+<h1>Regulamin i zasady moderacji serwera Wielogród</h1>
+<p class="metryka"><strong>Wersja:</strong> 1.0 · <strong>Obowiązuje od:</strong> publikacji na <code>wielogrod.pl</code> · <strong>Ostatnia zmiana:</strong> 2026-09-08</p>
+<p>Ten dokument mówi trzy rzeczy: <strong>jak się tu zachowujemy</strong>, <strong>co się dzieje, gdy ktoś złamie zasady</strong>, i <strong>jak zgłosić, że coś jest nie w porządku</strong>. Prywatność, czyli co zapisujemy i po co, opisuje <a href="prywatnosc.html">polityka prywatności</a>.</p>
+<p>Uczciwie o zakresie: to <strong>regulamin domowy</strong> małego serwera prowadzonego przez osobę prywatną, a nie umowa handlowa. Serwer jest dziś <strong>darmowy i bez sklepu</strong>. Gdyby kiedyś pojawiła się płatność, obowiązywać będą osobne warunki sprzedaży, a ten dokument zostanie uzupełniony przed pierwszą transakcją, nie po niej.</p>
+<hr>
+<h2>1. Pięć zasad, które wystarczy zapamiętać</h2>
+<p>Dla dzieci i dla każdego, kto nie chce czytać całości:</p>
+<ol><li><strong>Nie psuj cudzej pracy.</strong> Nie niszcz, nie zabieraj, nie przestawiaj.</li><li><strong>Mów tak, jak chcesz, żeby mówili do ciebie.</strong> Bez wyzwisk i przekleństw.</li><li><strong>Nie oszukuj.</strong> Żadnych programów dających przewagę.</li><li><strong>Nie podawaj o sobie prywatnych rzeczy.</strong> Nazwisko, szkoła, adres, telefon zostają poza grą.</li><li><strong>Gdy coś jest nie w porządku, powiedz.</strong> W grze <code>/helpop</code>, mailem <code>kontakt@wielogrod.pl</code>.</li></ol>
+<p>Reszta dokumentu to te same zasady, tylko dokładniej.</p>
+<hr>
+<h2>2. Kto prowadzi serwer i jak się skontaktować</h2>
+<div class="tabelka"><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Prowadzący</td><td>osoba prywatna, właściciel serwera Wielogród</td></tr><tr><td>Kontakt</td><td><code>kontakt@wielogrod.pl</code></td></tr><tr><td>Zgłoszenia w grze</td><td><code>/helpop &lt;treść&gt;</code> — trafia do opiekunów serwera</td></tr><tr><td>Strona</td><td><code>wielogrod.pl</code></td></tr></tbody></table></div>
+<p>Odpowiadamy na maile <strong>w ciągu 5 dni roboczych</strong>. Zgłoszenia dotyczące bezpieczeństwa dziecka traktujemy <strong>poza kolejnością, tego samego dnia</strong> — one nie czekają na nic.</p>
+<hr>
+<h2>3. Dla kogo jest ten serwer</h2>
+<p>Serwer jest <strong>polskojęzyczny</strong> i przeznaczony dla dzieci, młodzieży i rodzin.</p>
+<ul><li>Wejście odbywa się <strong>z zaproszenia</strong> (whitelista). Nie jest to serwer publiczny, na który wchodzi każdy, kto zna adres.</li><li>Za dziecko poniżej 16 lat o dołączeniu <strong>decyduje rodzic lub opiekun prawny</strong>. Prosimy wtedy o jedną wiadomość z konta rodzica, żebyśmy wiedzieli, że wie o grze.</li><li>Discord ma <strong>minimalny wiek 13 lat</strong> ustalony przez samego Discorda i my tego nie zmieniamy. Dziecko poniżej 13 lat <strong>nie musi</strong> mieć Discorda, żeby grać: zgłoszenie wysyła rodzic mailem.</li><li>Opiekunowie serwera nigdy nie prosi o hasło do konta Minecraft ani o żadne dane logowania.</li></ul>
+<hr>
+<h2>4. Zasady zachowania</h2>
+<h3>4.1 Cudza praca</h3>
+<ul><li>Nie niszczymy, nie przebudowujemy i nie zabieramy niczego, co zbudował ktoś inny.</li><li>Miasto na spawnie jest <strong>do zwiedzania</strong>, nie do budowania. Budujemy na własnej działce albo w świecie budowania (<code>/warp creative</code>).</li><li>Działkę zaznacza się złotą łopatą. To, co jest w twojej działce, jest twoje. To, co poza nią, nie jest.</li><li>Pułapki na innych graczy, blokowanie wejść, zasypywanie cudzych budowli — to też niszczenie cudzej pracy.</li></ul>
+<h3>4.2 Czat i rozmowa</h3>
+<ul><li>Bez wyzwisk, przekleństw, groźby i wyśmiewania. Filtr wulgaryzmów działa automatycznie, ale nie wyłapie wszystkiego, więc liczy się też to, czego nie wyłapał.</li><li>Bez treści dla dorosłych: seks, przemoc, narkotyki, alkohol, hazard.</li><li>Bez wykluczania kogokolwiek z powodu narodowości, koloru skóry, religii, niepełnosprawności, płci ani tego, kogo kocha.</li><li>Bez spamu, pisania samymi wielkimi literami i reklam innych serwerów.</li><li>Bez podszywania się pod opiekunów serwera i pod innych graczy.</li></ul>
+<h3>4.3 Bezpieczeństwo — najważniejszy rozdział dla rodziców</h3>
+<ul><li><strong>Nie podajemy w grze ani na Discordzie danych prywatnych</strong>: nazwiska, adresu, szkoły, numeru telefonu, adresu mailowego, zdjęć twarzy.</li><li><strong>Czat sam tego pilnuje, na dwa sposoby.</strong> Adresu e-mail, numeru telefonu, ulicy z numerem i kodu pocztowego <strong>filtr nie przepuści w ogóle</strong> — tak samo jak linków do innych stron i serwerów. Przy rzeczach, które bywają niewinne (wiek, miejscowość, szkoła, imię z nazwiskiem) wiadomość zostaje zatrzymana i pojawia się pytanie, czy na pewno chcesz ją wysłać. Można ją wtedy potwierdzić, ale opiekunowie serwera dostają o tym powiadomienie. Filtr nie zastępuje ostrożności: <strong>nazwiska sam z siebie nie rozpozna</strong> i nikt tego nie obiecuje.</li><li><strong>Nie umawiamy się na spotkania</strong> poznane przez serwer.</li><li><strong>Opiekun serwera nie pisze prywatnie do dziecka.</strong> Rozmowy z opiekunami prowadzimy na kanałach widocznych dla innych albo mailem, do którego dostęp ma rodzic. Jeśli ktoś podający się za opiekuna serwera pisze do twojego dziecka prywatnie, jest to powód do zgłoszenia.</li><li>Jeśli ktoś prosi cię o zdjęcia, o dane, albo namawia do rozmowy poza serwerem — <strong>nie odpowiadaj i zgłoś</strong>: <code>/helpop</code> albo <code>kontakt@wielogrod.pl</code>.</li><li>Zgłoszenie o zachowaniu, które wygląda na krzywdzenie dziecka, prowadzi do natychmiastowej blokady konta na czas wyjaśnienia i, gdy sytuacja tego wymaga, do powiadomienia odpowiednich służb.</li></ul>
+<h3>4.4 Uczciwa gra</h3>
+<ul><li>Zakaz programów dających przewagę: x-ray, autoklikery, latanie, śledzenie graczy. Anticheat działa w trybie łagodnym, żeby nie karać za lag, ale wykrycie kończy się karą.</li><li>Zakaz wykorzystywania błędów serwera do zdobywania przedmiotów. Znalazłeś błąd? Zgłoś go, to jest pomoc, a nie donos.</li><li>Nie wolno używać kilku kont do obejścia kary. Kara dotyczy osoby, nie loginu.</li></ul>
+<hr>
+<h2>5. Kary: dwie osobne drabiny</h2>
+<p>Serwer ma <strong>dwie niezależne drabiny kar</strong> i rodzic ma prawo wiedzieć, dlaczego.</p>
+<p><strong>Automat</strong> (filtr czatu) reaguje natychmiast, ale <strong>nigdy nie banuje</strong>. Najostrzejsze, co zrobi, to wyciszenie na dwie godziny i alert do opiekunów serwera. Powód jest prosty: wyrzucenie dziecka z serwera to decyzja dla człowieka, a nie dla licznika przewinień.</p>
+<p><strong>Człowiek</strong> (moderator) rozmawia, ostrzega, a w skrajnym przypadku blokuje konto — ale zawsze wie, kogo i za co blokuje.</p>
+<h3>Skąd wiadomo, które to przewinienie</h3>
+<p>To najczęstsze pytanie i odpowiedź jest inna dla każdej drabiny.</p>
+<p><strong>Automat liczy sam.</strong> Każde brzydkie słowo dokłada jeden punkt do licznika, który biegnie w <strong>oknie 30 minut</strong>. Po nałożeniu kary licznik wraca do zera, więc dziecko nie ciągnie za sobą przewinień sprzed tygodnia. Wyciszenie mija samo, nie trzeba się od niego odwoływać. Opiekun może sprawdzić stan licznika komendą <code>/czat kto &lt;nick&gt;</code>.</p>
+<p><strong>Człowiek nie liczy.</strong> Numery w prawej kolumnie to nie licznik, tylko <strong>skala powagi</strong>: pierwsza rozmowa, potem wyciszenie, potem wyrzucenie, na końcu blokada. O tym, gdzie jesteśmy na tej skali, decyduje <strong>rejestr zgłoszeń</strong>, w którym każda sprawa ma swój wiersz z datą. Opiekun sprawdza rejestr, a nie własną pamięć.</p>
+<div class="tabelka"><table><thead><tr><th>Poziom</th><th>Automat: liczba przewinień w 30 minut</th><th>Człowiek: która sprawa w rejestrze</th></tr></thead><tbody><tr><td>pierwszy</td><td>ostrzeżenie w czacie</td><td>rozmowa</td></tr><tr><td>drugi</td><td>5 przewinień — wyciszenie 5 minut</td><td>wyciszenie 1 godzina</td></tr><tr><td>trzeci</td><td>8 przewinień — wyciszenie 30 minut</td><td>wyrzucenie z serwera</td></tr><tr><td>czwarty</td><td>12 przewinień — wyciszenie 2 godziny <strong>+ alert do opiekunów</strong></td><td>blokada 24 godziny</td></tr><tr><td>powtarzalne</td><td><strong>automat nigdy nie banuje</strong></td><td>blokada stała, decyzja człowieka</td></tr></tbody></table></div>
+<p>Obie drabiny działają <strong>niezależnie</strong>. Automatyczne wyciszenie nie jest zapisem w rejestrze i nie przybliża dziecka do blokady. Odwrotnie też: rozmowa z opiekunem nie kasuje licznika filtra, bo ten i tak wygaśnie sam.</p>
+<p>Poza drabiną, natychmiast i bez ostrzeżenia:</p>
+<ul><li>treści seksualne dotyczące dzieci, nagabywanie dziecka, groźby wobec życia i zdrowia — <strong>blokada stała i zgłoszenie służbom</strong>,</li><li>reklama innego serwera na czacie — wyciszenie i usunięcie wiadomości,</li><li>oszukiwanie z użyciem programów — blokada do czasu rozmowy z opiekunem serwera.</li></ul>
+<p>Kary są <strong>proporcjonalne do wieku i intencji</strong>. Dziecko, które napisało brzydkie słowo, i osoba, która celowo skrzywdziła innego gracza, nie są tym samym przypadkiem.</p>
+<hr>
+<h2>6. Jak zgłosić i jak się odwołać</h2>
+<p><strong>Zgłoszenie</strong></p>
+<ol><li>W grze: <code>/helpop &lt;co się stało&gt;</code>. Trafia do opiekunów serwera od razu.</li><li>Mailem: <code>kontakt@wielogrod.pl</code>. Tu może pisać także rodzic, który nie gra.</li><li>Na Discordzie: kanał <code>#zgloszenia</code> (gdy Discord wystartuje).</li></ol>
+<p>Napisz <strong>kto, co, gdzie i kiedy</strong>. Jeśli chodzi o zniszczoną budowlę, wystarczy miejsce — mamy zapis historii bloków i sami sprawdzimy, kto co zmienił.</p>
+<p><strong>Co się dzieje potem</strong></p>
+<div class="tabelka"><table><thead><tr><th>Rodzaj zgłoszenia</th><th>Reakcja</th></tr></thead><tbody><tr><td>bezpieczeństwo dziecka</td><td>tego samego dnia</td></tr><tr><td>zniszczona budowla, kradzież</td><td>do 5 dni roboczych, z przywróceniem stanu</td></tr><tr><td>czat, zachowanie</td><td>do 5 dni roboczych</td></tr><tr><td>pomysł, usterka</td><td>bez terminu, ale odpowiadamy</td></tr></tbody></table></div>
+<p><strong>Odwołanie od kary</strong></p>
+<p>Każdą karę można zakwestionować: napisz na <code>kontakt@wielogrod.pl</code> w ciągu 14 dni. Odpowiada człowiek, nie automat. Jeśli kara była pomyłką, znosimy ją i piszemy dlaczego doszło do pomyłki. Wyciszenia automatu mijają same i nie ma potrzeby się od nich odwoływać.</p>
+<hr>
+<h2>7. Co zapisujemy</h2>
+<p>W skrócie, bo szczegóły są w <a href="prywatnosc.html">polityce prywatności</a>:</p>
+<ul><li><strong>historię zmian bloków</strong> (kto co postawił i zniszczył) — żeby dało się cofnąć zniszczenia,</li><li><strong>czat i komendy</strong> — żeby dało się sprawdzić zgłoszenie,</li><li><strong>login i adres IP przy wejściu</strong> — bo tak działa serwer gry i bez tego nie da się zablokować kogoś, kto wraca po banie.</li></ul>
+<p>Nie zbieramy nazwisk, adresów, numerów telefonu ani zdjęć. Nie sprzedajemy nikomu żadnych danych. Nie ma reklam.</p>
+<p>Rodzic może napisać na <code>kontakt@wielogrod.pl</code> i poprosić o usunięcie konta dziecka razem z jego danymi. Robimy to bez pytania o powód.</p>
+<hr>
+<h2>8. Zmiany regulaminu</h2>
+<p>Zmiany zapisujemy w tym dokumencie razem z datą, a wersję numerujemy. O zmianie ważnej dla graczy informujemy w grze i na Discordzie <strong>przed</strong> jej wejściem w życie. Poprzednie wersje przechowujemy i udostępniamy na prośbę wysłaną na <code>kontakt@wielogrod.pl</code>.</p>
+<hr>
+<h2>9. Czego ten dokument nie obejmuje</h2>
+<ul><li><strong>Płatności.</strong> Dziś ich nie ma. Zanim się pojawią, powstaną osobne warunki sprzedaży, polityka zwrotów i informacja o prawie odstąpienia.</li><li><strong>Prywatność w szczegółach.</strong> Osobny dokument: <a href="prywatnosc.html">polityka prywatności</a>.</li><li><strong>Obowiązki wynikające z przepisów o ochronie dzieci w sieci.</strong> Osobny dokument z oceną i listą zabezpieczeń, w przygotowaniu.</li></ul>
+<hr>
+<h2>Załącznik: skrót do gry (<code>/rules</code>)</h2>
+<p>Tekst wyświetlany komendą <code>/rules</code> w grze celowo jest krótszy. Ma pięć punktów z rozdziału 1 plus zdanie, gdzie szukać całości.</p>
+</div>
+
+<footer>
+  <div class="srodek">
+    <p>Wielogród · serwer Minecraft dla dzieci i rodzin · wielogrod.pl</p>
+    <p>Pytania i zgłoszenia: <a href="mailto:kontakt@wielogrod.pl">kontakt@wielogrod.pl</a></p>
+    <p>Serwis nie jest powiązany z Mojang Studios ani Microsoft. Minecraft jest znakiem towarowym Mojang Studios.</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -3,16 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wielogród — polski serwer Minecraft dla dzieci i rodzin</title>
-<meta name="description" content="Wielogród to polski serwer Minecraft dla dzieci i rodzin: miasto zabytków do zwiedzania i survival za murami. Java i Bedrock. Serwer w przygotowaniu.">
+<title>Komendy — Wielogród</title>
+<meta name="description" content="Lista komend serwera Wielogród: menu, teleportacje, wiadomości i zgłaszanie problemów.">
 <link rel="icon" href="ikona.png" type="image/png">
-<meta property="og:title" content="Wielogród — polski serwer Minecraft dla dzieci i rodzin">
-<meta property="og:description" content="Miasto zabytków do zwiedzania i survival za murami. Java i Bedrock.">
+<meta property="og:title" content="Komendy — Wielogród">
+<meta property="og:description" content="Lista komend serwera Wielogród: menu, teleportacje, wiadomości i zgłaszanie problemów.">
 <meta property="og:image" content="https://wielogrod.pl/logo_baner.png">
-<meta property="og:image:width" content="512">
-<meta property="og:image:height" content="256">
-<meta property="og:url" content="https://wielogrod.pl/">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="pl_PL">
 <style>
   /* Paleta znaku (docs/brand/README.md) */
@@ -257,213 +254,79 @@
     .hero { padding: 48px 0 44px; }
     section { padding: 44px 0; }
   }
+
+  /* --- podstrony: dokument i galeria --- */
+  .dokument { max-width: 760px; margin: 0 auto; padding: 34px 20px 70px; }
+  .dokument h1 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 6px; }
+  .dokument h2 { font-size: 21px; margin: 34px 0 10px; padding-top: 16px;
+                 border-top: 1px solid var(--granat3); }
+  .dokument h2:first-of-type { border-top: 0; padding-top: 0; }
+  .dokument h3 { font-size: 17px; margin: 24px 0 6px; }
+  .dokument p, .dokument li { line-height: 1.65; }
+  .dokument ul, .dokument ol { padding-left: 22px; }
+  .dokument li { margin-bottom: 7px; }
+  .dokument code { background: var(--granat3); padding: 1px 5px; border-radius: 3px;
+                   font-family: Consolas, "SF Mono", Menlo, monospace; font-size: .9em; }
+  .dokument pre { background: var(--granat2); border: 1px solid var(--granat3);
+                  border-radius: 6px; padding: 14px 16px; overflow-x: auto; font-size: 14px; }
+  .dokument pre code { background: none; padding: 0; }
+  .dokument blockquote { margin: 0 0 16px; padding: 4px 0 4px 18px;
+                         border-left: 3px solid var(--trawa); color: var(--kamien-cichy); }
+  .dokument hr { border: 0; border-top: 1px solid var(--granat3); margin: 30px 0; }
+  .dokument a { color: var(--trawa2); }
+  .tabelka { overflow-x: auto; margin: 0 0 20px; }
+  .dokument table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  .dokument th { text-align: left; padding: 9px 14px 9px 0;
+                 border-bottom: 2px solid var(--granat3); }
+  .dokument td { padding: 9px 14px 9px 0; border-bottom: 1px solid var(--granat3);
+                 vertical-align: top; }
+  .metryka { color: var(--kamien-cichy); font-size: 14px; margin: 0 0 26px;
+             padding-bottom: 16px; border-bottom: 1px solid var(--granat3); }
+  .wroc { display: inline-block; margin-bottom: 18px; color: var(--kamien-cichy);
+          text-decoration: none; font-size: 14px; }
+  .wroc:hover { color: var(--kamien); }
+
+  .galeria { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  .galeria figure { margin: 0; background: var(--granat2); border: 1px solid var(--granat3);
+                    border-radius: 8px; overflow: hidden; }
+  .galeria img { display: block; width: 100%; height: auto; background: var(--granat3); }
+  .galeria figcaption { padding: 12px 14px 14px; font-size: 14.5px; line-height: 1.5; }
+  .galeria figcaption b { display: block; margin-bottom: 3px; }
+  .galeria-pusta { background: var(--granat2); border: 1px dashed var(--granat3);
+                   border-radius: 8px; padding: 26px; color: var(--kamien-cichy); }
 </style>
 </head>
 <body>
 
-<!-- WSPOLNE:NAGLOWEK -->
 <header>
   <div class="srodek pasek">
     <a class="marka-link" href="index.html"><img src="ikona.png" alt=""><span class="marka">Wielogród</span></a>
-    <nav aria-label="Strony serwisu"><a href="index.html" class="tu" aria-current="page">Start</a><a href="galeria.html">Galeria</a><a href="komendy.html">Komendy</a><a href="regulamin.html">Regulamin</a><a href="prywatnosc.html">Prywatność</a></nav>
+    <nav aria-label="Strony serwisu"><a href="index.html">Start</a><a href="galeria.html">Galeria</a><a href="komendy.html" class="tu" aria-current="page">Komendy</a><a href="regulamin.html">Regulamin</a><a href="prywatnosc.html">Prywatność</a></nav>
   </div>
 </header>
-<!-- /WSPOLNE:NAGLOWEK -->
 
-<div class="hero-tlo">
-<div class="srodek hero">
-  <img class="znak" src="logo_baner.png"
-       alt="Wielogród — blok trawy z murem i wieżą">
-  <h1 class="tylko-czytnik">Wielogród</h1>
-  <p class="haslo">Zwiedzaj miasto, buduj za murami.</p>
-  <span class="plakietka">Serwer w przygotowaniu</span>
-  <p class="wstep">
-    Polski serwer Minecraft dla dzieci i rodzin. W środku miasto pełne odwzorowanych
-    zabytków do zwiedzania, a poza murami zwykły survival, w którym można budować własne
-    domy. Bez PvP w mieście, bez handlu za prawdziwe pieniądze, po polsku.
-  </p>
-  <div class="przyciski">
-    <a class="przycisk" href="#jak-wejsc">Jak wejść</a>
-    <a class="przycisk drugi" href="#rodzice">Dla rodziców</a>
-  </div>
+<div class="dokument">
+<h1>Komendy</h1>
+<p>Wszystko, co można wpisać na czacie. Komenda to słowo zaczynające się od ukośnika, wpisywane tam, gdzie zwykle pisze się wiadomości.</p>
+<p>Na telefonie i konsoli czat otwiera się przyciskiem dymka u góry ekranu, na komputerze klawiszem <strong>T</strong>. Wystarczy zapamiętać jedną: <strong><code>/menu</code></strong>. Reszta jest w środku.</p>
+<hr>
+<h2>Na start</h2>
+<div class="tabelka"><table><thead><tr><th>Komenda</th><th>Co robi</th></tr></thead><tbody><tr><td><code>/menu</code></td><td>menu serwera z przyciskami — stąd dojdziesz wszędzie</td></tr><tr><td><code>/pomoc</code></td><td>ta sama lista komend, ale w grze</td></tr><tr><td><code>/rules</code></td><td>zasady serwera w skrócie</td></tr></tbody></table></div>
+<h2>Poruszanie się</h2>
+<div class="tabelka"><table><thead><tr><th>Komenda</th><th>Co robi</th></tr></thead><tbody><tr><td><code>/spawn</code></td><td>powrót do miasta, z dowolnego miejsca</td></tr><tr><td><code>/sethome</code></td><td>zapisuje miejsce, w którym stoisz, jako twój dom</td></tr><tr><td><code>/home</code></td><td>przenosi cię do zapisanego domu</td></tr><tr><td><code>/back</code></td><td>wraca tam, gdzie byłeś przed teleportacją</td></tr><tr><td><code>/warp creative</code></td><td>świat budowania — tam można stawiać bloki bez ograniczeń</td></tr><tr><td><code>/warp osada</code></td><td>osada budowlana w świecie survival</td></tr></tbody></table></div>
+<h2>Z innymi graczami</h2>
+<div class="tabelka"><table><thead><tr><th>Komenda</th><th>Co robi</th></tr></thead><tbody><tr><td><code>/list</code></td><td>kto jest teraz na serwerze</td></tr><tr><td><code>/tpa &lt;gracz&gt;</code></td><td>prośba o teleportację do kogoś</td></tr><tr><td><code>/tpahere &lt;gracz&gt;</code></td><td>zaproszenie kogoś do siebie</td></tr><tr><td><code>/tpaccept</code> · <code>/tpdeny</code></td><td>zgoda albo odmowa na cudzą prośbę</td></tr><tr><td><code>/msg &lt;gracz&gt; &lt;treść&gt;</code></td><td>wiadomość prywatna</td></tr><tr><td><code>/r &lt;treść&gt;</code></td><td>szybka odpowiedź na ostatnią wiadomość</td></tr><tr><td><code>/afk</code></td><td>oznacza cię jako chwilowo nieobecnego</td></tr></tbody></table></div>
+<h2>Wygląd postaci</h2>
+<div class="tabelka"><table><thead><tr><th>Komenda</th><th>Co robi</th></tr></thead><tbody><tr><td><code>/skins</code></td><td>wybór gotowych skórek</td></tr><tr><td><code>/skin &lt;nick&gt;</code></td><td>skórka innego gracza</td></tr><tr><td><code>/skin url &lt;adres&gt;</code></td><td>własny plik ze skórką</td></tr></tbody></table></div>
+<h2>Gdy coś jest nie w porządku</h2>
+<div class="tabelka"><table><thead><tr><th>Komenda</th><th>Co robi</th></tr></thead><tbody><tr><td><code>/helpop &lt;treść&gt;</code></td><td>zgłoszenie do opiekunów serwera — używaj śmiało</td></tr><tr><td><code>/tak</code></td><td>potwierdza wiadomość zatrzymaną przez filtr czatu</td></tr></tbody></table></div>
+<p><strong><code>/helpop</code> to najważniejsza komenda na tej stronie.</strong> Jeśli ktoś ci dokucza, prosi o dane albo namawia do rozmowy poza serwerem, napisz nim od razu. Trafia prosto do opiekunów i nikt inny tego nie widzi. Można też napisać na <code>kontakt@wielogrod.pl</code>, także z konta rodzica.</p>
+<hr>
+<h2>Dwie rzeczy, które zaskakują</h2>
+<p><strong>Czat czasem zatrzyma twoją wiadomość.</strong> Dzieje się tak, gdy wygląda na to, że podajesz coś prywatnego o sobie: wiek, miejscowość, szkołę albo imię z nazwiskiem. Wtedy pojawia się pytanie, czy na pewno chcesz to wysłać. Jeśli tak, wpisz <code>/tak</code>. Adresu e-mail, numeru telefonu i linków nie wyślesz w ogóle — to nie pomyłka, tylko celowa zasada.</p>
+<p><strong>Grasz z telefonu albo konsoli?</strong> Twój nick na serwerze ma <strong>kropkę na początku</strong>, na przykład <code>.tomek</code>. Tak działa most między wersjami gry i tak trzeba cię wpisywać w komendach, na przykład <code>/tpa .tomek</code>.</p>
 </div>
-</div>
 
-<section id="co-to">
-  <div class="srodek">
-    <h2>Co to za miejsce</h2>
-    <p class="podtytul">
-      Pomysł jest prosty: jedno miasto, po którym się chodzi jak po muzeum na wolnym
-      powietrzu, i otwarty świat za jego murami, w którym się mieszka.
-    </p>
-    <div class="kafle">
-      <div class="kafel">
-        <span class="ikonka">🏛️</span>
-        <h3>Miasto zabytków</h3>
-        <p>
-          Odwzorowane budowle z polskich i brytyjskich miast, postawione tak, żeby dały się
-          obejść w kilka minut. Miasto rośnie o kolejne zabytki, a nie o kolejne tryby gry.
-        </p>
-      </div>
-      <div class="kafel">
-        <span class="ikonka">🧱</span>
-        <h3>Survival za murami</h3>
-        <p>
-          Za bramą zaczyna się zwykła gra. Zaznaczasz działkę złotą łopatą i nikt poza
-          Tobą oraz zaproszonymi kolegami nie zniszczy tego, co zbudujesz.
-        </p>
-      </div>
-      <div class="kafel">
-        <span class="ikonka">📱</span>
-        <h3>Telefon, konsola, komputer</h3>
-        <p>
-          Serwer przyjmuje graczy z wersji Java i z wersji Bedrock, czyli z telefonu,
-          tabletu, konsoli i Windowsa. Wszyscy grają razem, w jednym świecie.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="zdjecia">
-  <div class="srodek">
-    <h2>Tak to wygląda</h2>
-    <p class="podtytul">
-      Wszystko na zdjęciach zbudowaliśmy sami, blok po bloku. Miasto rośnie, więc
-      zdjęć będzie więcej.
-    </p>
-<!-- WSPOLNE:ZDJECIA -->
-<div class="zdjecia">
-<a href="galeria.html"><img src="galeria/01-ratusz-rynek.jpg" alt="Ratusz z Rzeszowa" loading="lazy"><span>Ratusz z Rzeszowa</span></a>
-<a href="galeria.html"><img src="galeria/02-zamek-plac-zamkowy.jpg" alt="Zamek na Placu Zamkowym" loading="lazy"><span>Zamek na Placu Zamkowym</span></a>
-<a href="galeria.html"><img src="galeria/03-kamienice.jpg" alt="Kamienice" loading="lazy"><span>Kamienice</span></a>
-<a href="galeria.html"><img src="galeria/04-twierdza.jpg" alt="Twierdza" loading="lazy"><span>Twierdza</span></a>
-</div>
-<!-- /WSPOLNE:ZDJECIA -->
-    <p class="wiecej"><a class="przycisk drugi" href="galeria.html">Cała galeria</a></p>
-  </div>
-</section>
-
-<section id="rodzice">
-  <div class="srodek">
-    <h2>Dla rodziców</h2>
-    <p class="podtytul">
-      Serwer powstaje z myślą o dzieciach, więc zabezpieczenia były pierwsze,
-      a zabawa druga. Oto co jest wdrożone i działa.
-    </p>
-    <ul class="lista">
-      <li>
-        <span class="tak">✓</span>
-        <span class="tresc"><b>Własny filtr czatu.</b> Napisany od zera pod język polski.
-        Rozpoznaje wulgaryzmy także wtedy, gdy dziecko rozbije je spacjami, podmieni litery
-        na cyfry albo użyje znaków z innych alfabetów. Nie przepuszcza linków, adresów
-        e-mail, numerów telefonu ani adresów zamieszkania, a przy wieku, szkole czy
-        miejscowości zatrzymuje wiadomość i pyta dziecko, czy na pewno chce ją wysłać.
-        Blokuje też pytania o takie dane zadawane innym.</span>
-      </li>
-      <li>
-        <span class="tak">✓</span>
-        <span class="tresc"><b>Ochrona przed niszczeniem.</b> Miasto jest chronione i nie da
-        się go zniszczyć. Poza miastem każdy zaznacza własną działkę, a wszystkie zmiany są
-        zapisywane, więc zniszczenia można cofnąć i sprawdzić, kto je zrobił.</span>
-      </li>
-      <li>
-        <span class="tak">✓</span>
-        <span class="tresc"><b>Bez walki między graczami w mieście.</b> Nikt nie zaatakuje
-        dziecka, które przyszło pozwiedzać.</span>
-      </li>
-      <li>
-        <span class="tak">✓</span>
-        <span class="tresc"><b>Ochrona przed oszukiwaniem.</b> Serwer wykrywa programy
-        dające nieuczciwą przewagę.</span>
-      </li>
-      <li>
-        <span class="tak">✓</span>
-        <span class="tresc"><b>Codzienna kopia świata.</b> Sprawdzona odtworzeniem, a nie
-        tylko włączona. Praca dziecka nie przepadnie przez awarię.</span>
-      </li>
-      <li>
-        <span class="tak">✓</span>
-        <span class="tresc"><b>Zero płatnej przewagi.</b> Nie sprzedajemy przedmiotów ani
-        mocy. Jeśli kiedykolwiek pojawi się sklep, będzie wyłącznie z ozdobami.</span>
-      </li>
-    </ul>
-    <div class="uwaga">
-      <b>Będziemy z Wami szczerzy:</b> serwer jeszcze nie jest otwarty i nie ma stałej ekipy
-      opiekunów. Dopóki jej nie będzie, nie zaprosimy obcych graczy. Obiecaliśmy, że
-      regulamin i informacja o zapisywanych danych pojawią się <b>przed</b> otwarciem,
-      nie po nim — i są gotowe do przeczytania:
-      <a href="regulamin.html">Regulamin</a> ·
-      <a href="prywatnosc.html">Prywatność</a>
-    </div>
-  </div>
-</section>
-
-<section id="jak-wejsc">
-  <div class="srodek">
-    <h2>Jak wejść</h2>
-    <p class="podtytul">
-      Adres podamy w dniu otwarcia. Poniżej zostawiamy same kroki, żeby dało się
-      przygotować wcześniej.
-    </p>
-    <div class="dwie">
-      <div class="platforma">
-        <h3>Minecraft: Java Edition</h3>
-        <p class="kto">Komputer z Windowsem, macOS lub Linuksem</p>
-        <ol>
-          <li>Uruchom grę i wejdź w <b>Gra wieloosobowa</b>.</li>
-          <li>Wybierz <b>Dodaj serwer</b>.</li>
-          <li>W polu adresu wpisz adres serwera.<br>
-              <span class="adres-wkrotce">adres pojawi się tutaj przy otwarciu</span></li>
-          <li>Zapisz i dołącz.</li>
-        </ol>
-      </div>
-      <div class="platforma">
-        <h3>Minecraft: Bedrock Edition</h3>
-        <p class="kto">Telefon, tablet, konsola, Windows ze Sklepu</p>
-        <ol>
-          <li>Wejdź w <b>Graj</b>, potem w zakładkę <b>Serwery</b>.</li>
-          <li>Na dole wybierz <b>Dodaj serwer</b>.</li>
-          <li>Wpisz nazwę, adres oraz <b>port</b> <code>19132</code>.<br>
-              <span class="adres-wkrotce">adres pojawi się tutaj przy otwarciu</span></li>
-          <li>Zapisz i dołącz.</li>
-        </ol>
-      </div>
-    </div>
-    <div class="uwaga">
-      <b>Dlaczego na Bedrocku trzeba podać port:</b> ta wersja gry nie obsługuje
-      automatycznego wyszukiwania adresu, którego używa Java. Nie da się tego obejść po
-      naszej stronie, dlatego port podajemy wprost.
-    </div>
-  </div>
-</section>
-
-<section id="kontakt">
-  <div class="srodek kontakt-blok">
-    <h2>Kontakt</h2>
-    <p class="podtytul" style="margin-left:auto;margin-right:auto">
-      Pytania od rodziców i zgłoszenia prosimy kierować na adres poniżej.
-      Odpowiadamy po polsku.
-    </p>
-    <a class="mail" href="mailto:kontakt@wielogrod.pl">kontakt@wielogrod.pl</a>
-
-    <ul class="kanaly">
-      <li><a href="https://www.instagram.com/wielogrod.pl/" target="_blank" rel="noopener">Instagram</a></li>
-      <li><a href="https://www.facebook.com/wielogrod" target="_blank" rel="noopener">Facebook</a></li>
-      <li><a href="https://www.youtube.com/@wielogrod" target="_blank" rel="noopener">YouTube</a></li>
-      <li><a href="https://www.tiktok.com/@wielogrod" target="_blank" rel="noopener">TikTok</a></li>
-    </ul>
-
-    <p class="kanaly-nota">
-      Kanały dopiero zakładamy, więc jeszcze na nich pusto. Zostawiamy je tutaj, żeby dało
-      się sprawdzić, że to ta sama inicjatywa. <strong>Serwer Discord otworzymy w dniu
-      startu</strong>, dla rodziców i graczy od 13 lat — tyle wymaga sam Discord.
-      Młodsze dzieci nie potrzebują go, żeby grać: zgłoszenie wysyła rodzic mailem.
-    </p>
-  </div>
-</section>
-
-<!-- WSPOLNE:STOPKA -->
 <footer>
   <div class="srodek">
     <p>Wielogród · serwer Minecraft dla dzieci i rodzin · wielogrod.pl</p>
@@ -471,7 +334,6 @@
     <p>Serwis nie jest powiązany z Mojang Studios ani Microsoft. Minecraft jest znakiem towarowym Mojang Studios.</p>
   </div>
 </footer>
-<!-- /WSPOLNE:STOPKA -->
 
 </body>
 </html>
