@@ -15,6 +15,24 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="pl_PL">
 <style>
+  /* Kroj naglowkow: Fredoka, PLIK U NAS (www/kroje/), nie z serwera Google. Strona
+     obiecuje w polityce prywatnosci brak sledzenia - a kroj ladowany z Google wysyla
+     adres IP odwiedzajacego do Google przy kazdej wizycie. Dwa podzbiory: podstawowy
+     i rozszerzony (polskie znaki). Krój zmienny: jeden plik obsluguje wagi 600 i 700.
+     Dlaczego Fredoka, a nie kroj "zabytkowy": to dziecko ma zainteresowac rodzica
+     serwerem, nie odwrotnie - strona ma najpierw spodobac sie dziecku. */
+  @font-face {
+    font-family: "Fredoka"; font-style: normal; font-weight: 300 700; font-display: swap;
+    src: url("kroje/fredoka-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  @font-face {
+    font-family: "Fredoka"; font-style: normal; font-weight: 300 700; font-display: swap;
+    src: url("kroje/fredoka-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  :root { --naglowki: "Fredoka", "Segoe UI", Roboto, system-ui, sans-serif; }
+
   /* Paleta znaku (docs/brand/README.md) */
   :root {
     --granat:  #181D28;
@@ -42,6 +60,13 @@
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
+
+  h1, h2, h3, .marka, .haslo, .zdjecia span, .kafel h3, .platforma h3,
+  .galeria figcaption b, .dokument h1, .dokument h2, .dokument h3 {
+    font-family: var(--naglowki); letter-spacing: 0;
+  }
+  h2 { font-weight: 700; }
+  .haslo { font-size: 1.35em; }
 
   a { color: var(--trawa2); }
   a:hover { color: var(--kamien); }
