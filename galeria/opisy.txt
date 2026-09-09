@@ -1,9 +1,12 @@
 # plik | Tytul | opis  (jedna linia na zdjecie; zdjecia bez wpisu tez sie pokaza, bez podpisu)
-01-ratusz-rynek.jpg | Ratusz z Rzeszowa | Nasza własna budowla na Rynku, postawiona z proporcji odczytanych ze zdjęć. Wejście z flagami od strony placu, zegar w szczycie, balkony jak w oryginale.
+01-ratusz-rynek.jpg | Ratusz z Rzeszowa | Nasza własna budowla, postawiona z proporcji odczytanych ze zdjęć prawdziwego ratusza. O zmierzchu widać, że okna świecą — w środku są piętra, strych i zegar w szczycie.
 02-zamek-plac-zamkowy.jpg | Zamek na Placu Zamkowym | Pierwszy kadr każdego nowego gracza. Tu stajesz po wejściu na serwer, z wieżą zegarową na wprost.
 03-kamienice.jpg | Kamienice | Pierzeja kamienic z własnego generatora: wykusze, balkony, okiennice i gzymsy, każda inna.
 04-twierdza.jpg | Twierdza | Pokaz wszystkich elementów muru miejskiego naraz: cokół, blanki, przypory, wieżyczki i brama z machikułami.
 05-dziedziniec-twierdzy.jpg | Dziedziniec twierdzy | W środku studnia i latarnie tam, gdzie chodzi się nocą. Na murach patyna z mchu.
-06-bramy.jpg | Bramy między światami | Dwie bramy na Placu Zamkowym: do świata budowania i do osady w survivalu. Każda podpisana, każda z hologramem.
-07-brama-na-survival.jpg | Za bramą zaczyna się survival | Widok z bramy miasta na dzicz. Hologram mówi, jak zaznaczyć działkę złotą łopatą.
+06-bramy.jpg | Bramy między światami | Dwie bramy na Placu Zamkowym: do świata budowania i do osady w survivalu. Każda podpisana, każda z hologramem, który mówi, gdzie prowadzi.
+07-brama-na-survival.jpg | Za bramą zaczyna się survival | Widok z dziczy na bramę miasta. Po tej stronie jest już noc, potwory i własna działka do zaznaczenia złotą łopatą.
 08-tower-bridge.jpg | Tower Bridge | Model autorstwa polstyle z Planet Minecraft, przez nas przebudowany i wstawiony na rzekę. Autor zezwala na dowolne użycie.
+09-tower-bridge-noca.jpg | Tower Bridge nocą | Ten sam most po zachodzie słońca. Latarnie i okna wież świecą, a woda pod nim jest czarna — nocne zdjęcie jest najlepszym sprawdzeniem, czy budowla ma własne światło.
+10-brama-tunel.jpg | Widok z bramy na most | Kadr z wnętrza przejazdu bramnego. Ciemny tunel, a na końcu rozświetlony Tower Bridge — tak wygląda wyjście z miasta w stronę rzeki.
+11-brama-o-zmierzchu.jpg | Brama o zmierzchu | Ta sama brama po zachodzie słońca. Latarnie na słupkach zapalają się same, a zielone iskry pokazują, że przejście jest otwarte.
