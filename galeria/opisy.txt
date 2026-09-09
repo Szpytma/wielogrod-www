@@ -1,6 +1,6 @@
 # plik | Tytul | opis  (jedna linia na zdjecie; zdjecia bez wpisu tez sie pokaza, bez podpisu)
-01-ratusz-rynek.jpg | Ratusz z Rzeszowa | Nasza własna budowla, postawiona z proporcji odczytanych ze zdjęć prawdziwego ratusza. O zmierzchu widać, że okna świecą — w środku są piętra, strych i zegar w szczycie.
-02-zamek-plac-zamkowy.jpg | Zamek na Placu Zamkowym | Pierwszy kadr każdego nowego gracza. Tu stajesz po wejściu na serwer, z wieżą zegarową na wprost.
+01-ratusz-rynek.jpg | Rynek o zmierzchu | Widok od studni: ratusz z Rzeszowa, estrada i pierzeje kamienic. Plac ma wymiary i układ prawdziwego rzeszowskiego Rynku — odczytane z mapy, nie zgadywane.
+02-zamek-plac-zamkowy.jpg | Zamek na Placu Zamkowym | Zamek Królewski z wieżą zegarową, kilka kroków na południe od Rynku.
 03-kamienice.jpg | Kamienice | Pierzeja kamienic z własnego generatora: wykusze, balkony, okiennice i gzymsy, każda inna.
 04-twierdza.jpg | Twierdza | Pokaz wszystkich elementów muru miejskiego naraz: cokół, blanki, przypory, wieżyczki i brama z machikułami.
 05-dziedziniec-twierdzy.jpg | Dziedziniec twierdzy | W środku studnia i latarnie tam, gdzie chodzi się nocą. Na murach patyna z mchu.
@@ -10,3 +10,7 @@
 09-tower-bridge-noca.jpg | Tower Bridge nocą | Ten sam most po zachodzie słońca. Latarnie i okna wież świecą, a woda pod nim jest czarna — nocne zdjęcie jest najlepszym sprawdzeniem, czy budowla ma własne światło.
 10-brama-tunel.jpg | Widok z bramy na most | Kadr z wnętrza przejazdu bramnego. Ciemny tunel, a na końcu rozświetlony Tower Bridge — tak wygląda wyjście z miasta w stronę rzeki.
 11-brama-o-zmierzchu.jpg | Brama o zmierzchu | Ta sama brama po zachodzie słońca. Latarnie na słupkach zapalają się same, a zielone iskry pokazują, że przejście jest otwarte.
+12-rynek-w-dzien.jpg | Rynek w dzień | Dąb rośnie tam, gdzie rośnie prawdziwy, pod nim ławki. Z lewej ratusz, z prawej studnia z dzwonkiem i kratą nad szybem.
+13-pierzeje-o-zmierzchu.jpg | Pierzeje kamienic | Kamienice wokół Rynku: każda w innym kolorze, z okiennicami, kwiatami na parapetach i światłem w oknach po zmroku.
+14-estrada-rynek-26.jpg | Estrada na Rynku 26 | Scena stoi na dachu budynku, w którym jest wejście do podziemi — tak samo jak w Rzeszowie. Dach z wiśniowych desek i baner powstały ręcznie w grze.
+15-scena-noca.jpg | Scena nocą | Cztery kolorowe snopy światła z beaconów i lampy mrugające pod dachem. Wszystko napędza zegar z redstone ukryty w więźbie.
