@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Wielogród — polski serwer Minecraft dla dzieci i rodzin</title>
-<meta name="description" content="Wielogród to polski serwer Minecraft dla dzieci i rodzin: miasto zabytków do zwiedzania i survival za murami. Java i Bedrock. Serwer w przygotowaniu.">
+<meta name="description" content="Wielogród to polski serwer Minecraft dla dzieci i rodzin: miasto zabytków do zwiedzania i survival za murami. Java i Bedrock. Wejście na zaproszenie.">
 <link rel="icon" href="ikona.png" type="image/png">
 <meta property="og:title" content="Wielogród — polski serwer Minecraft dla dzieci i rodzin">
 <meta property="og:description" content="Miasto zabytków do zwiedzania i survival za murami. Java i Bedrock.">
@@ -345,12 +345,23 @@
   <h1 class="tylko-czytnik">Wielogród</h1>
   <p class="haslo">Zwiedzaj miasto, buduj za murami.</p>
 <!-- WSPOLNE:ADRES -->
-<span class="plakietka">Serwer w przygotowaniu</span>
-<div class="adres adres-wkrotce-pasek" aria-live="polite">
+<span class="plakietka">Wejście na zaproszenie</span>
+<div class="adres">
   <span class="adres-etykieta">Adres serwera</span>
-  <span class="adres-wartosc">wkrótce</span>
-  <span class="adres-start">start: termin ustalimy</span>
+  <code class="adres-wartosc" id="adres-java">wielogrod.pl</code>
+  <button type="button" class="kopiuj" data-kopiuj="wielogrod.pl">Kopiuj</button>
+  <span class="adres-bedrock">Bedrock: <code>mc.wielogrod.pl</code> · port <code>19132</code></span>
 </div>
+<script>
+document.querySelectorAll(".kopiuj").forEach(function (b) {
+  b.addEventListener("click", function () {
+    var t = b.getAttribute("data-kopiuj");
+    var ok = function () { b.textContent = "Skopiowano"; setTimeout(function () { b.textContent = "Kopiuj"; }, 1800); };
+    if (navigator.clipboard) { navigator.clipboard.writeText(t).then(ok); }
+    else { var i = document.createElement("input"); i.value = t; document.body.appendChild(i); i.select(); document.execCommand("copy"); i.remove(); ok(); }
+  });
+});
+</script>
 <!-- /WSPOLNE:ADRES -->
   <p class="wstep">
     Polski serwer Minecraft dla dzieci i rodzin. W środku miasto pełne odwzorowanych
@@ -478,8 +489,13 @@
   <div class="srodek">
     <h2>Jak wejść</h2>
     <p class="podtytul">
-      Adres podamy w dniu otwarcia. Poniżej zostawiamy same kroki, żeby dało się
-      przygotować wcześniej.
+      <strong>Serwer działa na zaproszenie.</strong> Żeby wejść, trzeba być na liście gości —
+      napisz na <a href="mailto:kontakt@wielogrod.pl">kontakt@wielogrod.pl</a> i podaj nick
+      z gry. Bez tego serwer odpowie <em>„nie jesteś na liście"</em>.
+    </p>
+    <p class="podtytul">
+      Java i Bedrock mają <strong>różne adresy</strong> — na Bedrocku trzeba też podać port.
+      Szczegóły w krokach poniżej.
     </p>
     <div class="dwie">
       <div class="platforma">
@@ -489,7 +505,7 @@
           <li>Uruchom grę i wejdź w <b>Gra wieloosobowa</b>.</li>
           <li>Wybierz <b>Dodaj serwer</b>.</li>
           <li>W polu adresu wpisz adres serwera.<br>
-              <!-- WSPOLNE:ADRES-JAVA --><span class="adres-wkrotce">adres pojawi się tutaj przy otwarciu</span><!-- /WSPOLNE:ADRES-JAVA --></li>
+              <!-- WSPOLNE:ADRES-JAVA --><code class="adres-w-kroku">wielogrod.pl</code><!-- /WSPOLNE:ADRES-JAVA --></li>
           <li>Zapisz i dołącz.</li>
         </ol>
       </div>
@@ -500,7 +516,7 @@
           <li>Wejdź w <b>Graj</b>, potem w zakładkę <b>Serwery</b>.</li>
           <li>Na dole wybierz <b>Dodaj serwer</b>.</li>
           <li>Wpisz nazwę, adres oraz <b>port</b> <code>19132</code>.<br>
-              <!-- WSPOLNE:ADRES-BEDROCK --><span class="adres-wkrotce">adres pojawi się tutaj przy otwarciu</span><!-- /WSPOLNE:ADRES-BEDROCK --></li>
+              <!-- WSPOLNE:ADRES-BEDROCK --><code class="adres-w-kroku">mc.wielogrod.pl</code> · port <code>19132</code><!-- /WSPOLNE:ADRES-BEDROCK --></li>
           <li>Zapisz i dołącz.</li>
         </ol>
       </div>
