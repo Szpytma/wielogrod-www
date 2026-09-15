@@ -1,10 +1,9 @@
 # plik | Tytul | opis  (jedna linia na zdjecie; zdjecia bez wpisu tez sie pokaza, bez podpisu)
 01-ratusz-rynek.jpg | Rynek o zmierzchu | Widok od studni: ratusz z Rzeszowa, estrada i pierzeje kamienic. Plac ma wymiary i układ prawdziwego rzeszowskiego Rynku — odczytane z mapy, nie zgadywane.
-02-zamek-plac-zamkowy.jpg | Zamek na Placu Zamkowym | Zamek Królewski z wieżą zegarową, kilka kroków na południe od Rynku.
 03-kamienice.jpg | Kamienice | Pierzeja kamienic z własnego generatora: wykusze, balkony, okiennice i gzymsy, każda inna.
 04-twierdza.jpg | Twierdza | Pokaz wszystkich elementów muru miejskiego naraz: cokół, blanki, przypory, wieżyczki i brama z machikułami.
 05-dziedziniec-twierdzy.jpg | Dziedziniec twierdzy | W środku studnia i latarnie tam, gdzie chodzi się nocą. Na murach patyna z mchu.
-06-bramy.jpg | Bramy między światami | Dwie bramy na Placu Zamkowym: do świata budowania i do osady w survivalu. Każda podpisana, każda z hologramem, który mówi, gdzie prowadzi.
+06-bramy.jpg | Bramy między światami | Dwie bramy kilka kroków za południowym wylotem Rynku: do świata budowania i do osady w survivalu. Każda podpisana, każda z hologramem, który mówi, gdzie prowadzi.
 07-brama-na-survival.jpg | Za bramą zaczyna się survival | Widok z dziczy na bramę miasta. Po tej stronie jest już noc, potwory i własna działka do zaznaczenia złotą łopatą.
 08-tower-bridge.jpg | Tower Bridge | Model autorstwa polstyle z Planet Minecraft, przez nas przebudowany i wstawiony na rzekę. Autor zezwala na dowolne użycie.
 09-tower-bridge-noca.jpg | Tower Bridge nocą | Ten sam most po zachodzie słońca. Latarnie i okna wież świecą, a woda pod nim jest czarna — nocne zdjęcie jest najlepszym sprawdzeniem, czy budowla ma własne światło.
