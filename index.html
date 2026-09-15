@@ -270,6 +270,8 @@
   .adres-port code { color: var(--kamien); font-size: 14px; }
   .adres-wkrotce-pasek .adres-wartosc { color: var(--kamien-cichy); font-family: inherit; font-weight: 600; }
   .adres-start { color: var(--kamien-cichy); font-size: 14px; }
+  .wersja-gry { margin-top: 12px; font-size: 14px; color: var(--kamien-cichy); }
+  .wersja-gry b { color: var(--kamien); }
   @media (max-width: 560px) {
     .adres { width: 100%; }
     .adres-edycja { min-width: 0; width: 100%; }
@@ -282,6 +284,11 @@
   }
   .kopiuj:hover { background: var(--trawa2); }
   .plakietka.otwarty { border-color: var(--trawa); color: var(--trawa2); }
+  /* Plakietka w trybie zaproszenia JEST odnosnikiem - musi to po sobie pokazywac,
+     inaczej nikt w nia nie kliknie. */
+  a.plakietka-link { text-decoration: none; transition: background .15s, color .15s; }
+  a.plakietka-link:hover, a.plakietka-link:focus-visible {
+    background: var(--helm); color: var(--granat); }
 
   /* --- kontakt --- */
   .kontakt-blok { text-align: center; }
@@ -360,7 +367,7 @@
   <p class="haslo">Zwiedzaj miasto, buduj za murami.</p>
 <!-- WSPOLNE:ADRES -->
 <div class="hero-adres">
-<span class="plakietka">Wejście na zaproszenie</span>
+<a class="plakietka plakietka-link" href="mailto:kontakt@wielogrod.pl?subject=Pro%C5%9Bba%20o%20dost%C4%99p%20do%20serwera%20Wielogr%C3%B3d&amp;body=Dzien%20dobry%2C%0A%0Aprosze%20o%20dopisanie%20do%20listy%20gosci%20serwera%20Wielogrod.%0A%0ANick%20w%20grze%3A%20%0AEdycja%20%28Java%20/%20Bedrock%29%3A%20%0AWiek%20dziecka%3A%20%0A%0APozdrawiam">Wejście na zaproszenie — poproś o dostęp</a>
 <div class="adres">
   <div class="adres-rzad">
     <span class="adres-edycja">Java</span>
@@ -531,6 +538,11 @@ document.querySelectorAll(".kopiuj").forEach(function (b) {
               <!-- WSPOLNE:ADRES-JAVA --><code class="adres-w-kroku">wielogrod.pl</code><!-- /WSPOLNE:ADRES-JAVA --></li>
           <li>Zapisz i dołącz.</li>
         </ol>
+        <p class="wersja-gry">
+          Wersja gry: <b><!-- WSPOLNE:WERSJA -->26.2<!-- /WSPOLNE:WERSJA --></b>.
+          Jeśli zobaczysz <em>„Outdated server"</em>, zmień wersję w launcherze
+          (zakładka <b>Instalacje</b>) na tę.
+        </p>
       </div>
       <div class="platforma">
         <h3>Minecraft: Bedrock Edition</h3>
@@ -542,6 +554,9 @@ document.querySelectorAll(".kopiuj").forEach(function (b) {
               <!-- WSPOLNE:ADRES-BEDROCK --><code class="adres-w-kroku">mc.wielogrod.pl</code> · port <code>19132</code><!-- /WSPOLNE:ADRES-BEDROCK --></li>
           <li>Zapisz i dołącz.</li>
         </ol>
+        <p class="wersja-gry">
+          Wystarczy aktualna wersja ze sklepu — na Bedrocku nie trzeba nic przełączać.
+        </p>
       </div>
     </div>
     <div class="uwaga">

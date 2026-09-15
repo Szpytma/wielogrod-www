@@ -268,6 +268,8 @@
   .adres-port code { color: var(--kamien); font-size: 14px; }
   .adres-wkrotce-pasek .adres-wartosc { color: var(--kamien-cichy); font-family: inherit; font-weight: 600; }
   .adres-start { color: var(--kamien-cichy); font-size: 14px; }
+  .wersja-gry { margin-top: 12px; font-size: 14px; color: var(--kamien-cichy); }
+  .wersja-gry b { color: var(--kamien); }
   @media (max-width: 560px) {
     .adres { width: 100%; }
     .adres-edycja { min-width: 0; width: 100%; }
@@ -280,6 +282,11 @@
   }
   .kopiuj:hover { background: var(--trawa2); }
   .plakietka.otwarty { border-color: var(--trawa); color: var(--trawa2); }
+  /* Plakietka w trybie zaproszenia JEST odnosnikiem - musi to po sobie pokazywac,
+     inaczej nikt w nia nie kliknie. */
+  a.plakietka-link { text-decoration: none; transition: background .15s, color .15s; }
+  a.plakietka-link:hover, a.plakietka-link:focus-visible {
+    background: var(--helm); color: var(--granat); }
 
   /* --- kontakt --- */
   .kontakt-blok { text-align: center; }
