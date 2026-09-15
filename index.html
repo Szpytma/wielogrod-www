@@ -250,17 +250,31 @@
   .adres-w-kroku { font-size: 16px; background: var(--granat3); padding: 2px 8px; border-radius: 4px; }
 
   /* --- pasek adresu w hero --- */
+  /* Plakietka i pasek adresu byly oba elementami LINIOWYMI, wiec siadaly obok siebie
+     i caly blok wygladal na przekrzywiony. Kolumna ustawia je jeden pod drugim i srodkuje. */
+  .hero-adres { display: flex; flex-direction: column; align-items: center; gap: 14px; margin: 20px auto 0; }
   .adres {
-    display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center;
-    gap: 8px 14px; margin: 18px auto 0; padding: 10px 16px;
-    background: rgba(32, 39, 54, 0.85); border: 1px solid var(--granat3); border-radius: 10px;
+    display: flex; flex-direction: column; gap: 10px;
+    padding: 14px 18px; text-align: left;
+    background: rgba(32, 39, 54, 0.85); border: 1px solid var(--granat3); border-radius: 12px;
     font-size: 15px;
   }
-  .adres-etykieta { color: var(--kamien-cichy); text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; font-weight: 600; }
+  /* Jeden wiersz na edycje: etykieta o stalej szerokosci, zeby oba adresy stanely w kolumnie. */
+  .adres-rzad { display: flex; align-items: center; gap: 10px 14px; flex-wrap: wrap; }
+  .adres-edycja {
+    min-width: 76px; color: var(--kamien-cichy); text-transform: uppercase;
+    letter-spacing: 0.08em; font-size: 12px; font-weight: 600;
+  }
   .adres-wartosc { font-size: 19px; font-weight: 700; color: var(--kamien); font-family: Consolas, "SF Mono", Menlo, monospace; letter-spacing: 0.02em; }
+  .adres-port { color: var(--kamien-cichy); font-size: 13.5px; }
+  .adres-port code { color: var(--kamien); font-size: 14px; }
   .adres-wkrotce-pasek .adres-wartosc { color: var(--kamien-cichy); font-family: inherit; font-weight: 600; }
   .adres-start { color: var(--kamien-cichy); font-size: 14px; }
-  .adres-bedrock { color: var(--kamien-cichy); font-size: 13.5px; width: 100%; text-align: center; }
+  @media (max-width: 560px) {
+    .adres { width: 100%; }
+    .adres-edycja { min-width: 0; width: 100%; }
+    .adres-wartosc { font-size: 17px; }
+  }
   .adres-bedrock code { background: var(--granat3); padding: 1px 6px; border-radius: 4px; }
   .kopiuj {
     background: var(--trawa); color: var(--granat); border: 0; border-radius: 6px;
@@ -345,12 +359,21 @@
   <h1 class="tylko-czytnik">Wielogród</h1>
   <p class="haslo">Zwiedzaj miasto, buduj za murami.</p>
 <!-- WSPOLNE:ADRES -->
+<div class="hero-adres">
 <span class="plakietka">Wejście na zaproszenie</span>
 <div class="adres">
-  <span class="adres-etykieta">Adres serwera</span>
-  <code class="adres-wartosc" id="adres-java">wielogrod.pl</code>
-  <button type="button" class="kopiuj" data-kopiuj="wielogrod.pl">Kopiuj</button>
-  <span class="adres-bedrock">Bedrock: <code>mc.wielogrod.pl</code> · port <code>19132</code></span>
+  <div class="adres-rzad">
+    <span class="adres-edycja">Java</span>
+    <code class="adres-wartosc">wielogrod.pl</code>
+    <button type="button" class="kopiuj" data-kopiuj="wielogrod.pl">Kopiuj</button>
+  </div>
+  <div class="adres-rzad">
+    <span class="adres-edycja">Bedrock</span>
+    <code class="adres-wartosc">mc.wielogrod.pl</code>
+    <span class="adres-port">port <code>19132</code></span>
+    <button type="button" class="kopiuj" data-kopiuj="mc.wielogrod.pl">Kopiuj</button>
+  </div>
+</div>
 </div>
 <script>
 document.querySelectorAll(".kopiuj").forEach(function (b) {
