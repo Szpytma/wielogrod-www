@@ -321,6 +321,15 @@
     font-size: 15px;
   }
   .kanaly a:hover { border-color: var(--trawa); color: var(--trawa2); }
+  /* Pigulka wsparcia. Ikona to EMOJI, nie obrazek z obcego serwera: strona nie wysyla
+     zadnego zapytania na zewnatrz (patrz prywatnosc.md) i nie uzywamy cudzego znaku
+     towarowego. Ten sam jezyk ikon co kafle w sekcji "Co to za miejsce". */
+  .kanaly a.wsparcie {
+    display: inline-flex; align-items: center; gap: 8px;
+    border-color: var(--trawa); color: var(--trawa2);
+  }
+  .kanaly a.wsparcie:hover { background: var(--granat3); }
+  .kanaly a.wsparcie .kubek { font-size: 16px; line-height: 1; }
   .kanaly-nota {
     margin: 20px auto 0; max-width: 56ch;
     font-size: 15px; color: var(--kamien-cichy);
@@ -591,6 +600,11 @@ document.querySelectorAll(".kopiuj").forEach(function (b) {
       <li><a href="https://www.facebook.com/wielogrod" target="_blank" rel="noopener">Facebook</a></li>
       <li><a href="https://www.youtube.com/@wielogrod" target="_blank" rel="noopener">YouTube</a></li>
       <li><a href="https://www.tiktok.com/@wielogrod" target="_blank" rel="noopener">TikTok</a></li>
+      <li><a class="wsparcie" href="https://buymeacoffee.com/wielogrod" target="_blank"
+             rel="noopener"
+             aria-label="Dorzuć się do kosztów serwera — wpłacają wyłącznie osoby dorosłe"
+             title="Dorzuć się do kosztów serwera — wpłacają wyłącznie osoby dorosłe"><span
+             class="kubek" aria-hidden="true">☕</span>Dorzuć się</a></li>
     </ul>
 
     <p class="kanaly-nota">
@@ -598,6 +612,10 @@ document.querySelectorAll(".kopiuj").forEach(function (b) {
       się sprawdzić, że to ta sama inicjatywa. <strong>Serwer Discord otworzymy w dniu
       startu</strong>, dla rodziców i graczy od 13 lat — tyle wymaga sam Discord.
       Młodsze dzieci nie potrzebują go, żeby grać: zgłoszenie wysyła rodzic mailem.
+      <br><br>
+      Przycisk <b>Dorzuć się</b> prowadzi do zbiórki na koszt serwera i jest
+      <b>dla dorosłych</b> — wpłata nie daje niczego w grze. Szczegóły w sekcji
+      <a href="#rodzice">Dla rodziców</a>.
     </p>
   </div>
 </section>
