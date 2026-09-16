@@ -327,7 +327,11 @@
     border-color: var(--trawa); color: var(--trawa2);
   }
   .kanaly a.wsparcie:hover { background: var(--granat3); }
-  .kanaly a.wsparcie .kubek { font-size: 16px; line-height: 1; }
+  /* Kubek rysowany kreska w `currentColor`, nie emoji. Emoji na ciemnym tle czyta sie
+     jak ciemna plamka - sprawdzone na wdrozonej stronie. Ikona liniowa dziedziczy zielen
+     przycisku, wiec ma ten sam kontrast co napis i pasuje do reszty. Nadal zero zapytan
+     na zewnatrz: to kilka linii w tym pliku, nie obrazek z cudzego serwera. */
+  .kanaly a.wsparcie .kubek { width: 17px; height: 17px; flex: 0 0 auto; }
   .kanaly-nota {
     margin: 20px auto 0; max-width: 56ch;
     font-size: 15px; color: var(--kamien-cichy);

@@ -329,7 +329,11 @@
     border-color: var(--trawa); color: var(--trawa2);
   }
   .kanaly a.wsparcie:hover { background: var(--granat3); }
-  .kanaly a.wsparcie .kubek { font-size: 16px; line-height: 1; }
+  /* Kubek rysowany kreska w `currentColor`, nie emoji. Emoji na ciemnym tle czyta sie
+     jak ciemna plamka - sprawdzone na wdrozonej stronie. Ikona liniowa dziedziczy zielen
+     przycisku, wiec ma ten sam kontrast co napis i pasuje do reszty. Nadal zero zapytan
+     na zewnatrz: to kilka linii w tym pliku, nie obrazek z cudzego serwera. */
+  .kanaly a.wsparcie .kubek { width: 17px; height: 17px; flex: 0 0 auto; }
   .kanaly-nota {
     margin: 20px auto 0; max-width: 56ch;
     font-size: 15px; color: var(--kamien-cichy);
@@ -603,8 +607,12 @@ document.querySelectorAll(".kopiuj").forEach(function (b) {
       <li><a class="wsparcie" href="https://buymeacoffee.com/wielogrod" target="_blank"
              rel="noopener"
              aria-label="Dorzuć się do kosztów serwera — wpłacają wyłącznie osoby dorosłe"
-             title="Dorzuć się do kosztów serwera — wpłacają wyłącznie osoby dorosłe"><span
-             class="kubek" aria-hidden="true">☕</span>Dorzuć się</a></li>
+             title="Dorzuć się do kosztów serwera — wpłacają wyłącznie osoby dorosłe"><svg
+             class="kubek" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true"><path d="M4 9h12v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path
+             d="M16 10h1.6a2.4 2.4 0 0 1 0 4.8H16"/><path
+             d="M8.5 6c0-1 1-1.4 1-2.4M12.5 6c0-1 1-1.4 1-2.4"/></svg>Dorzuć się</a></li>
     </ul>
 
     <p class="kanaly-nota">
