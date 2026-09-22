@@ -583,6 +583,25 @@ document.querySelectorAll(".kopiuj").forEach(function (b) {
       </div>
     </div>
     <div class="uwaga">
+      <b>Przy pierwszym wejściu serwer poprosi o hasło.</b> To normalne i dotyczy
+      <b>każdego</b>, także graczy z kupioną grą. Dziecko wpisuje na czacie
+      <code>/register hasło hasło</code> — dwa razy to samo — i gotowe.
+      Przy kolejnych wejściach wystarczy <code>/login hasło</code>.
+      <br><br>
+      Na wpisanie są <b>trzy minuty</b>, a gdy dziecko wróci w ciągu godziny z tej samej
+      sieci, serwer nie pyta ponownie. Hasło zmienia się przez
+      <code>/changepassword stare nowe</code>. <b>Zapomniane hasło</b> — napisz na
+      <a href="mailto:kontakt@wielogrod.pl">kontakt@wielogrod.pl</a>, skasujemy je,
+      a dziecko ustawi nowe przy następnym wejściu. Podejrzeć go nie umiemy:
+      przechowujemy wyłącznie zaszyfrowany skrót.
+      <br><br>
+      <b>Po co to jest:</b> serwer nie sprawdza tożsamości u Mojanga — dzięki temu mogą
+      grać także dzieci bez kupionego konta. Ceną jest to, że sam nick nikogo nie
+      potwierdza; hasło robi to za niego i pilnuje, żeby nikt nie wszedł na cudze konto.
+      <a href="prywatnosc.html">Więcej w polityce prywatności</a>.
+    </div>
+
+    <div class="uwaga">
       <b>Dlaczego na Bedrocku trzeba podać port:</b> ta wersja gry nie obsługuje
       automatycznego wyszukiwania adresu, którego używa Java. Nie da się tego obejść po
       naszej stronie, dlatego port podajemy wprost.
